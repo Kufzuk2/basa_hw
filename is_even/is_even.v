@@ -1,12 +1,13 @@
 module is_even
 #(
-    parameter MAX_NUM_SIZE = 64
-)
-(
-    input  wire     num,
-    output wire is_even
+    parameter NUM_SIZE = 12
 )
 
-    assign is_even = ~num[0];
+(
+    input  wire [NUM_SIZE - 1: 0] num,
+    output wire                   out
+);
+
+    assign out = ~num[0];
         
 endmodule
