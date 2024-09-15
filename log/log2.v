@@ -28,14 +28,3 @@ module log2
 endmodule
     
 
-
-/*
-assign degree = (num & `MASK_1   ) ? 0:
-                    (num & `MASK_2   ) ? 1: 
-                    (num & `MASK_4   ) ? 2: 
-                    (num & `MASK_8   ) ? 3: 
-                    (num & `MASK_16  ) ? 4: 
-                    (num & `MASK_32  ) ? 5: 
-                    (num & `MASK_64  ) ? 6: 
-                    (num & `MASK_128 ) ? 7: 
-                           `MASK_BEDA     ;*/
