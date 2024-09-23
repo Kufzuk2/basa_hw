@@ -1,0 +1,16 @@
+module freq_del
+(
+    input clk,
+    input reset
+);
+    
+    reg [1: 0] counter;
+    reg           clk3;
+
+    always @(posedge clk)
+        clk3    <= ~reset ? ((counter == 2'h3) ? ~clk3 :        clk3) :    clk3;
+
+    always @(posedge clk)
+        counter <= ~reset ? ((counter == 2'h3) ?     0 : counter + 2'h1) : counter;
+
+endmodule
