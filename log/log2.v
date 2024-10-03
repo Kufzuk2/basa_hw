@@ -15,14 +15,14 @@ module log2
     output wire [2: 0] degree
 );
 
-    assign degree = ((num & `MASK_1   ) >> 0) * 3'h0 |
-                    ((num & `MASK_2   ) >> 1) * 3'h1 |   
-                    ((num & `MASK_4   ) >> 2) * 3'h2 |  
-                    ((num & `MASK_8   ) >> 3) * 3'h3 |  
-                    ((num & `MASK_16  ) >> 4) * 3'h4 |  
-                    ((num & `MASK_32  ) >> 5) * 3'h5 |  
-                    ((num & `MASK_64  ) >> 6) * 3'h6 |  
-                    ((num & `MASK_128 ) >> 7) * 3'h7 ;  
+    assign degree = { 3{(`MASK_1 == ((num & `MASK_1   ) >> 0))}} & 3'h0 |
+                    { 3{(`MASK_1 == ((num & `MASK_2   ) >> 1))}} & 3'h1 |   
+                    { 3{(`MASK_1 == ((num & `MASK_4   ) >> 2))}} & 3'h2 |  
+                    { 3{(`MASK_1 == ((num & `MASK_8   ) >> 3))}} & 3'h3 |  
+                    { 3{(`MASK_1 == ((num & `MASK_16  ) >> 4))}} & 3'h4 |  
+                    { 3{(`MASK_1 == ((num & `MASK_32  ) >> 5))}} & 3'h5 |  
+                    { 3{(`MASK_1 == ((num & `MASK_64  ) >> 6))}} & 3'h6 |  
+                    { 3{(`MASK_1 == ((num & `MASK_128 ) >> 7))}} & 3'h7 ;  
                     // i suppose that there are no other options
 
 endmodule
