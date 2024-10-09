@@ -1,21 +1,44 @@
 module freq_del
+#(
+    parameter      EVEN_DIV = 6,
+    parameter  COUNTER_SIZE = $clog2(EVEN_DIV),
+    parameter COUNT_BOARDER = EVEN_DIV / 2 - 1,
+
+
+    // for impuls
+    parameter      IMP_WAIT = 5
+)
 (
     input clk,
     input reset
 );
     
-    reg [2: 0]  counter;
+    reg [COUNTER_SIZE - 1: 0] counter;
+    wire                      clk_div;
+
+    // freq division
+    assign clk_div = (counter > COUNT_BOARDER);
+    always @(posedge clk)
+        if (reset)
+            counter <= 0;
+        else
+            counter <= (counter == EVEN_DIV - 1) ? 'h0 : counter + 'h1;
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
     reg [2: 0] counter2;
-    wire           imp5;
-    wire           clk6;
+    wire            imp;
 
-    assign clk6 = (counter   > 3'h2);
-    assign imp5 = (counter2 == 3'h4);
-   
+    // impulse every IMP_WAIT cycles
+    assign imp = (counter2 == IMP_WAIT - 1);
     always @(posedge clk)
-        counter  <= ~reset ? ((counter  == 3'h5) ?  3'h0 : counter  + 3'h1) : {2'h0, ~reset};
-
-    always @(posedge clk)
-        counter2 <= ~reset ? ((counter2 == 3'h4) ?  3'h0 : counter2 + 3'h1) : {2'h0, ~reset};
+        if (reset)
+            counter2 <= 0;
+        else
+            counter2 <= (counter2 == IMP_WAIT - 1) ? 'h0 : counter2 + 'h1;
 
 endmodule

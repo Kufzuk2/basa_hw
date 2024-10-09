@@ -1,13 +1,24 @@
 `timescale 1ns/100ps
 
-module freq_test;
+module freq_test
+#(
+    parameter      EVEN_DIV = 14,
+    parameter  COUNTER_SIZE = $clog2(EVEN_DIV),
+    parameter COUNT_BOARDER = EVEN_DIV / 2 - 1,
 
-reg   clk;
-reg reset;
+    // for impuls
+    parameter  IMP_WAIT = 8
+);
 
-freq_del   freq_test 
-        (  .clk(clk  ),
-         .reset(reset)
+    reg   clk;
+    reg reset;
+
+    freq_del   
+        #(.EVEN_DIV(EVEN_DIV), 
+          .IMP_WAIT(IMP_WAIT))
+    freq_del 
+        (      .clk(clk     ),
+             .reset(reset   )
         );
 
     always 
