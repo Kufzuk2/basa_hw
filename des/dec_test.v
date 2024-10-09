@@ -2,17 +2,23 @@
 `timescale 1ns/100ps
 `define TESTNUM 50
 
-module dec_test;
-
-    wire [7: 0] out;
-    reg         clk;
-    reg  [2: 0]   N;
+module dec_test
+#(
+    parameter N_IN = 3,
+    parameter OUT  = 2 ** N_IN
+);
+    
+    wire [OUT  - 1: 0] out;
+    reg  [N_IN - 1: 0]   N;
+    reg                clk;
 
     always 
         #1 clk = ~clk;
    
 
-    decoder decoder
+    decoder 
+            #(.N_IN(N_IN), .OUT(OUT))
+    decoder
     (
          .N   (  N),
          .out (out)
