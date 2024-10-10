@@ -10,11 +10,12 @@ module freq_del
 )
 (
     input clk,
-    input reset
+    input reset,
+    
+    output reg [COUNTER_SIZE - 1: 0] counter,
+    output wire                      clk_div
 );
     
-    reg [COUNTER_SIZE - 1: 0] counter;
-    wire                      clk_div;
 
     // freq division
     assign clk_div = (counter > COUNT_BOARDER);
