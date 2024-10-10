@@ -2,12 +2,8 @@
 
 module freq_test
 #(
-    parameter      EVEN_DIV = 14,
-    parameter  COUNTER_SIZE = $clog2(EVEN_DIV),
-    parameter COUNT_BOARDER = EVEN_DIV / 2 - 1,
-
-    // for impuls
-    parameter  IMP_WAIT = 8
+    parameter EVEN_DIV = 14,
+    parameter IMP_WAIT = 8
 );
 
     reg   clk;

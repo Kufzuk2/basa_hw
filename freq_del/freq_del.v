@@ -1,12 +1,7 @@
 module freq_del
 #(
-    parameter      EVEN_DIV = 6,
-    parameter  COUNTER_SIZE = $clog2(EVEN_DIV),
-    parameter COUNT_BOARDER = EVEN_DIV / 2 - 1,
-
-
-    // for impuls
-    parameter      IMP_WAIT = 5
+    parameter EVEN_DIV = 6,
+    parameter IMP_WAIT = 5
 )
 (
     input  wire     clk,
@@ -15,6 +10,9 @@ module freq_del
     output wire clk_div,
     output wire     imp
 );
+    
+    localparam  COUNTER_SIZE = $clog2(EVEN_DIV);
+    localparam COUNT_BOARDER = EVEN_DIV / 2 - 1;
     
     output reg [COUNTER_SIZE - 1: 0] counter;
 
