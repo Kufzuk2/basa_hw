@@ -9,13 +9,14 @@ module freq_del
     parameter      IMP_WAIT = 5
 )
 (
-    input clk,
-    input reset,
+    input  wire     clk,
+    input  wire   reset,
     
-    output reg [COUNTER_SIZE - 1: 0] counter,
-    output wire                      clk_div
+    output wire clk_div,
+    output wire     imp
 );
     
+    output reg [COUNTER_SIZE - 1: 0] counter;
 
     // freq division
     assign clk_div = (counter > COUNT_BOARDER);
@@ -32,7 +33,6 @@ module freq_del
 
 
     reg [2: 0] counter2;
-    wire            imp;
 
     // impulse every IMP_WAIT cycles
     assign imp = (counter2 == IMP_WAIT - 1);
