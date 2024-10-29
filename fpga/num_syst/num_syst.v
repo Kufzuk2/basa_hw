@@ -1,5 +1,6 @@
 
 `define DISPLAY_0 7'b0111111
+`define DISPLAY_OVERFLOW 7'b1100011
 
 module numbers
 (
@@ -9,10 +10,12 @@ module numbers
     input [7: 0] switches,
 
     output wire [7: 0] LEDR,
-    output  reg [6: 0] HEX4, //1st digit in hex
-    output  reg [6: 0] HEX5, //2nd digit in hex
-    output  reg [6: 0] HEX6, //1st digit in dec
-    output  reg [6: 0] HEX7  //2nd digit in dec
+    output  reg [6: 0] HEX4, //right digit in hex
+    output  reg [6: 0] HEX5, //left  digit in hex
+    output  reg [6: 0] HEX6, //right digit in dec
+    output  reg [6: 0] HEX7, //left  digit in dec
+
+    output wire LEDG8
 );
 
     assign LEDR = switches;
@@ -22,6 +25,11 @@ module numbers
     wire [6: 0] hex5_loc;
     wire [6: 0] hex6_loc;
     wire [6: 0] hex7_loc;
+    
+
+    wire [1: 0]    dec_offset;
+    wire           dec_overflow; // might be replaced by ledg8
+    assign LEDG8 = dec_overflow;
 
 
     // rst regs
@@ -36,26 +44,43 @@ module numbers
     reg trans_pushed;
 
 
-    // hex 
-    wire [3: 0] hex_left;
-    wire [3: 0] hex_right;
+    // connection with decoder
+    wire [3: 0]   hex_left;
+    wire [3: 0]  hex_right;
+    wire [3: 0]  dec_right;
+    wire [3: 0]   dec_left;
+    wire [7: 0] dec_in_hex;
 
-    assign hex_left  = switches[7: 4];
-    assign hex_right = switches[3: 0];
+    assign hex_left  =   switches[7: 4];
+    assign hex_right =   switches[3: 0];
+    assign dec_left  = dec_in_hex[7: 4];
+    assign dec_right = dec_in_hex[3: 0];
 
-    decoder dec_hex_left
-    (
-        .HEX0(hex4_loc),
-        .hex_num(hex_left)
-    );
+    assign dec_overflow = (switches > 8'h63);
 
     decoder dec_hex_right
     (
-        .HEX0(hex5_loc),
+        .HEX0(hex4_loc),
         .hex_num(hex_right)
     );
 
+    decoder dec_hex_left
+    (
+        .HEX0(hex5_loc),
+        .hex_num(hex_left)
+    );
 
+    decoder dec_dec_right
+    (
+        .HEX0(hex6_loc),
+        .hex_num(dec_right)
+    );
+
+    decoder dec_dec_left
+    (
+        .HEX0(hex5_loc),
+        .hex_num(dec_left)
+    );
 
 
     // syncr reset logic
@@ -83,21 +108,39 @@ module numbers
         if (rst_pushed) begin
             HEX4 <= `DISPLAY_0;  
             HEX5 <= `DISPLAY_0;  
-        end else
-            HEX4 <= hex4_loc;  
-            HEX5 <= hex5_loc;  
+        end else begin
+            HEX4 <= trans_pushed ? hex4_loc : HEX4;  
+            HEX5 <= trans_pushed ? hex5_loc : HEX5;  
         end
-        
 
 
+    //dec count logic
+    genvar i;
+    generate
+        for (i = 0; i < 8; i = i + 1) begin
+            if (i == 0) begin
+                assign dec_in_hex = 0;
+                assign dec_offset = 0;
+            end else begin
+                assign dec_in_hex = dec_in_hex + switches[i - 1] - (dec_in_hex > 8'h9) & 8'ha;
+                assign dec_offset = dec_offset + (dec_in_hex > 9);
+            end
+        end
+    endgenerate
 
-    always @(posedge clk) begin
-        if (reset)
-            HEX0 <= 7'h7f;
-        else
-            HEX0 <= rst_pushed ? hex_local : HEX0;
+    //dec display logic
+    always @(posedge clk)
+        if (rst_pushed) begin
+            HEX6 <= `DISPLAY_0;  
+            HEX7 <= `DISPLAY_0;  
+        end else begin
+            HEX6 <= ~trans_pushed ? HEX6 :
+                     dec_overflow ? `DISPLAY_OVERFLOW : hex6_loc;  
 
-    end
+            HEX7 <= ~trans_pushed ? HEX7 :
+                     dec_overflow ? `DISPLAY_OVERFLOW : hex7_loc;  
+        end
+
 endmodule
 
 
