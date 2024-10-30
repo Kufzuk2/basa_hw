@@ -1,5 +1,5 @@
 // frequency 50 MHz
-`define DISPLAY_0 7'b0111111
+`define DISPLAY_0 ~7'b0111111
 
 
 module timer
@@ -69,12 +69,16 @@ module timer
     (
         .clk(clk),
         .reset(rst),
+        .start(start),
         .clk_div(ms_100_clk)
     );
 
     reg rst_push_1;
     reg rst_push_2;
     reg rst;
+
+    reg hold_rst;
+    reg hold_start;
 
     reg start_push_1;
     reg start_push_2;
@@ -101,18 +105,32 @@ module timer
 
 
 
+// hold rst logic
 
+    always @(posedge clk) begin
+        if (rst)
+            hold_rst <= 1;
+        else
+            hold_rst <= (ms_100_clk) ? 0 : hold_rst;
+    end
+
+    always @(posedge clk) begin
+        if (start)
+            hold_start <= 1;
+        else
+            hold_start <= (ms_100_clk & ~work) ? 0 : hold_rst;
+    end
 
 
     always @(posedge clk) begin // offset 1 extra cycle /////// is it bad????? seems not
         if (rst)
             work <= 0;
         else
-            work <= start ? ~work : work;
+            work <= start ? 1 : work;
     end
 
     always @(posedge ms_100_clk) begin
-        if (rst)
+        if (hold_rst)
             split_count <= 0;
         else
             split_count <= ~work           ?        split_count    :
@@ -121,7 +139,7 @@ module timer
 
     
     always @(posedge ms_100_clk) begin
-        if (rst)
+        if (hold_rst)
             s_unit_count <= 0;
         else
             s_unit_count <= ~(overflow_split & work) ? s_unit_count : 
@@ -130,7 +148,7 @@ module timer
     end
 
     always @(posedge ms_100_clk) begin
-        if (rst)
+        if (hold_rst)
             s_dec_count <= 0;
         else
             s_dec_count <= ~(overflow_unit & work) ? s_dec_count : 
@@ -140,7 +158,7 @@ module timer
 
 
     always @(posedge clk)
-        if (rst) begin
+        if (hold_rst) begin
             HEX0 <= `DISPLAY_0;  
             HEX1 <= `DISPLAY_0;  
             HEX2 <= `DISPLAY_0;  

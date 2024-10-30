@@ -19,8 +19,8 @@ module test_timer;
 
     initial begin
         clk  <= 0;
-        KEY0 <= 0;
-        KEY1 <= 0;
+        KEY0 <= 1;
+        KEY1 <= 1;
     end
 
 
@@ -28,9 +28,15 @@ module test_timer;
 		$dumpfile("dump.vcd"); $dumpvars(0, test_timer);
         #5; 
         KEY0 = 0;
-        #2; 
+        #1;
+        KEY0 = 1;
+        #10; 
         KEY1 = 0;
-        #150000000;
+        #1; 
+        KEY1 = 1;
+
+        #30000000;
+//        #150000000;
         $finish;
     end
 
