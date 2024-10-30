@@ -27,15 +27,15 @@ module test_timer;
     initial begin
 		$dumpfile("dump.vcd"); $dumpvars(0, test_timer);
         #5; 
-        KEY0 = 0;
-        #1;
-        KEY0 = 1;
+        KEY0 <= 0;
+        #2;
+        KEY0 <= 1;
         #10; 
-        KEY1 = 0;
-        #1; 
-        KEY1 = 1;
+        KEY1 <= 0;
+        #2; 
+        KEY1 <= 1;
 
-        #30000000;
+        #150000000;
 //        #150000000;
         $finish;
     end

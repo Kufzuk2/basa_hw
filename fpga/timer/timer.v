@@ -96,7 +96,7 @@ module timer
         
     // syncr translation button logic
     always @(posedge clk) begin
-        start_push_1 <=         KEY0;
+        start_push_1 <=         KEY1;
         start_push_2 <= start_push_1;
     end
 
@@ -124,12 +124,12 @@ module timer
 
     always @(posedge clk) begin // offset 1 extra cycle /////// is it bad????? seems not
         if (rst)
-            work <= 0;
+            work <= start ? 1 : 0;
         else
             work <= start ? 1 : work;
     end
 
-    always @(posedge ms_100_clk) begin
+    always @(negedge ms_100_clk) begin
         if (hold_rst)
             split_count <= 0;
         else
@@ -138,7 +138,7 @@ module timer
     end
 
     
-    always @(posedge ms_100_clk) begin
+    always @(negedge ms_100_clk) begin
         if (hold_rst)
             s_unit_count <= 0;
         else
@@ -147,7 +147,7 @@ module timer
                               s_unit_count + 1;
     end
 
-    always @(posedge ms_100_clk) begin
+    always @(negedge ms_100_clk) begin
         if (hold_rst)
             s_dec_count <= 0;
         else
