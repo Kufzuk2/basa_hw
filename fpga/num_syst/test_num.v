@@ -74,6 +74,13 @@ module test_num;
         #2; 
         KEY1 <= 1;
 
+        #10;
+        switches <= 8'h0f;
+        #4; 
+        KEY1 <= 0;
+        #2; 
+        KEY1 <= 1;
+
         #150;
 //        #150000000;
         $finish;

@@ -71,14 +71,6 @@ module num_syst
 
 	wire dec_overflow;
     assign dec_overflow = (switches > 8'h63);
-/*
-	 reg dec_overflow;
-	 always @(posedge clk) begin
-		if (rst_pushed)
-			dec_overflow <= 0;
-		else
-			dec_overflow <= switches > 8'h63;
-*/
 
     decoder dec_hex_right
     (
@@ -135,10 +127,6 @@ module num_syst
         end else begin
             HEX4 <= trans_pushed ? hex4_loc : HEX4;  
             HEX5 <= trans_pushed ? hex5_loc : HEX5;  
-            if (trans_pushed) begin
-                $display("switches = %b, hex_in_hex = %h, dec_in_hex = %h \n",
-                          switches, {hex_left, hex_right}, dec_in_hex);
-            end
         end
 	end
 	
@@ -150,26 +138,6 @@ module num_syst
 	);
 	
 	
-	/*	  
-	wire [7: 0] dec_in_hexl [7: 0];	  
-	wire [1: 0] dec_offsetl [7: 0];
-    //dec count logic
-    genvar i;
-    generate
-        for (i = 0; i < 8; i = i + 1) begin : gen_block
-            if (i == 0) begin
-                assign dec_in_hexl[i] = 0;
-                assign dec_offsetl[i] = 0;
-            end else begin
-                assign dec_in_hexl[i] = dec_in_hexl[i - 1] + switches[i - 1] - (dec_in_hex[i - 1] > 8'h9) & 8'ha;
-                assign dec_offsetl[i] = dec_offsetl[i - 1] + (dec_in_hexl[i - 1] > 9);
-            end
-        end
-    endgenerate
-	 
-	 assign dec_in_hex = dec_in_hexl[7];
-	 assign dec_offset = dec_offsetl[7];
-*/
     //dec display logic
     always @(posedge clk)
         if (rst_pushed) begin
