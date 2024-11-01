@@ -3,6 +3,7 @@
 `define DISPLAY_OVERFLOW ~7'b1100011
 `include "dd_iter.v"
 `include "double_dabble.v"
+`include "decoder.v"
 module num_syst
 (
     input   clk,  // ASSIGN CLOCK_50
@@ -16,7 +17,8 @@ module num_syst
     output  reg [6: 0] HEX6, // ASSIGN HEX6_[6:0]
     output  reg [6: 0] HEX7, // ASSIGN HEX7_[6:0]
 
-    output wire LEDG8 // ASSIGN SW_8
+    //output wire old_LEDG8 // ASSIGN SW_8
+    output reg  LEDG8 // ASSIGN SW_8
 );
 
     assign LEDR = switches;
@@ -30,7 +32,16 @@ module num_syst
 
     wire [1: 0]    dec_offset;
   
-    assign LEDG8 = dec_overflow;
+
+	always @(posedge clk) begin
+        if (rst_pushed)
+            LEDG8 <= 0;
+        else
+            LEDG8 <= trans_pushed ? dec_overflow : LEDG8;
+    end
+    
+
+   // assign LEDG8 = dec_overflow;
 
 
     // rst regs
@@ -51,21 +62,24 @@ module num_syst
     wire [3: 0]  dec_right;
     wire [3: 0]   dec_left;
     wire [7: 0] dec_in_hex;
+    wire [3: 0]  dec_hundr;
 
     assign hex_left  =   switches[7: 4];
     assign hex_right =   switches[3: 0];
     assign dec_left  = dec_in_hex[7: 4];
     assign dec_right = dec_in_hex[3: 0];
 
-    //assign dec_overflow = i(switches > 8'h63);
-
+	wire dec_overflow;
+    assign dec_overflow = (switches > 8'h63);
+/*
 	 reg dec_overflow;
 	 always @(posedge clk) begin
 		if (rst_pushed)
 			dec_overflow <= 0;
 		else
 			dec_overflow <= switches > 8'h63;
-	 
+*/
+
     decoder dec_hex_right
     (
         .HEX0(hex4_loc),
@@ -89,6 +103,8 @@ module num_syst
         .HEX0(hex7_loc),
         .hex_num(dec_left)
     );
+
+
 
 
     // syncr reset logic
@@ -119,6 +135,10 @@ module num_syst
         end else begin
             HEX4 <= trans_pushed ? hex4_loc : HEX4;  
             HEX5 <= trans_pushed ? hex5_loc : HEX5;  
+            if (trans_pushed) begin
+                $display("switches = %b, hex_in_hex = %h, dec_in_hex = %h \n",
+                          switches, {hex_left, hex_right}, dec_in_hex);
+            end
         end
 	end
 	
@@ -126,7 +146,7 @@ module num_syst
 	double_dabble vin_to_bcd
 	(
 		.bin(switches),
-		.bcd({dec_in_hex[7: 4], dec_in_hex[3: 0]})
+		.bcd({dec_hundr, dec_in_hex[7: 4], dec_in_hex[3: 0]})
 	);
 	
 	
