@@ -41,16 +41,16 @@ module counter
 
     //inc
     always @(posedge clk) begin
-        but1_1 <=   KEY1;
+        but1_1 <=   KEY0;
         but1_2 <= but1_1;
     end
     always @(posedge clk)
-        but1 <= but1_1 & ~but1_2;
+        but1 <= ~but1_1 & but1_2;
 
 
     //dec
     always @(posedge clk) begin
-        but2_1 <=   KEY2;
+        but2_1 <=   KEY0;
         but2_2 <= but2_1;
     end
     always @(posedge clk)
