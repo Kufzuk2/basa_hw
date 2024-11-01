@@ -1,22 +1,21 @@
 
-`define DISPLAY_0 ~7'b0111111
-`define DISPLAY_OVERFLOW ~7'b1100011
-`include "dd_iter.v"
-`include "double_dabble.v"
-module num_syst
+`define DISPLAY_0 7'b0111111
+`define DISPLAY_OVERFLOW 7'b1100011
+
+module numbers
 (
-    input   clk,  // ASSIGN CLOCK_50
-    input  KEY0,  // ASSIGN KEY_0
-    input  KEY1,  // ASSIGN KEY_1
-    input [7: 0] switches, // ASSIGN SW_[7:0]
+    input   clk,
+    input  KEY0, //reset
+    input  KEY1, // translate
+    input [7: 0] switches,
 
-    output wire [7: 0] LEDR, // ASSIGN LEDR_[7:0]
-    output  reg [6: 0] HEX4, // ASSIGN HEX4_[6:0]
-    output  reg [6: 0] HEX5, // ASSIGN HEX5_[6:0]
-    output  reg [6: 0] HEX6, // ASSIGN HEX6_[6:0]
-    output  reg [6: 0] HEX7, // ASSIGN HEX7_[6:0]
+    output wire [7: 0] LEDR,
+    output  reg [6: 0] HEX4, //right digit in hex
+    output  reg [6: 0] HEX5, //left  digit in hex
+    output  reg [6: 0] HEX6, //right digit in dec
+    output  reg [6: 0] HEX7, //left  digit in dec
 
-    output wire LEDG8 // ASSIGN SW_8
+    output wire LEDG8
 );
 
     assign LEDR = switches;
@@ -29,7 +28,7 @@ module num_syst
     
 
     wire [1: 0]    dec_offset;
-  
+    wire           dec_overflow; // might be replaced by ledg8
     assign LEDG8 = dec_overflow;
 
 
@@ -57,15 +56,8 @@ module num_syst
     assign dec_left  = dec_in_hex[7: 4];
     assign dec_right = dec_in_hex[3: 0];
 
-    //assign dec_overflow = i(switches > 8'h63);
+    assign dec_overflow = (switches > 8'h63);
 
-	 reg dec_overflow;
-	 always @(posedge clk) begin
-		if (rst_pushed)
-			dec_overflow <= 0;
-		else
-			dec_overflow <= switches > 8'h63;
-	 
     decoder dec_hex_right
     (
         .HEX0(hex4_loc),
@@ -86,7 +78,7 @@ module num_syst
 
     decoder dec_dec_left
     (
-        .HEX0(hex7_loc),
+        .HEX0(hex5_loc),
         .hex_num(dec_left)
     );
 
@@ -103,7 +95,7 @@ module num_syst
         
     // syncr translation button logic
     always @(posedge clk) begin
-        trans_push_1 <=         KEY1;
+        trans_push_1 <=         KEY0;
         trans_push_2 <= trans_push_1;
     end
 
@@ -112,7 +104,7 @@ module num_syst
 
 
     //hex display logic
-    always @(posedge clk) begin
+    always @(posedge clk)
         if (rst_pushed) begin
             HEX4 <= `DISPLAY_0;  
             HEX5 <= `DISPLAY_0;  
@@ -120,36 +112,22 @@ module num_syst
             HEX4 <= trans_pushed ? hex4_loc : HEX4;  
             HEX5 <= trans_pushed ? hex5_loc : HEX5;  
         end
-	end
-	
-	
-	double_dabble vin_to_bcd
-	(
-		.bin(switches),
-		.bcd({dec_in_hex[7: 4], dec_in_hex[3: 0]})
-	);
-	
-	
-	/*	  
-	wire [7: 0] dec_in_hexl [7: 0];	  
-	wire [1: 0] dec_offsetl [7: 0];
+
+
     //dec count logic
     genvar i;
     generate
-        for (i = 0; i < 8; i = i + 1) begin : gen_block
+        for (i = 0; i < 8; i = i + 1) begin
             if (i == 0) begin
-                assign dec_in_hexl[i] = 0;
-                assign dec_offsetl[i] = 0;
+                assign dec_in_hex = 0;
+                assign dec_offset = 0;
             end else begin
-                assign dec_in_hexl[i] = dec_in_hexl[i - 1] + switches[i - 1] - (dec_in_hex[i - 1] > 8'h9) & 8'ha;
-                assign dec_offsetl[i] = dec_offsetl[i - 1] + (dec_in_hexl[i - 1] > 9);
+                assign dec_in_hex = dec_in_hex + switches[i - 1] - (dec_in_hex > 8'h9) & 8'ha;
+                assign dec_offset = dec_offset + (dec_in_hex > 9);
             end
         end
     endgenerate
-	 
-	 assign dec_in_hex = dec_in_hexl[7];
-	 assign dec_offset = dec_offsetl[7];
-*/
+
     //dec display logic
     always @(posedge clk)
         if (rst_pushed) begin
