@@ -18,7 +18,7 @@ module blink
     wire rdy_ms;
     wire nul_ms;
     assign rdy_ms = (tact_counter == 'd50000);
-    assign nul_ms = (ms_counter == (switches << 2));
+    assign nul_ms = (ms_counter == (switches >> 2));
 
 
     always @(posedge clk) begin

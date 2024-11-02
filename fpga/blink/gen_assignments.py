@@ -34,6 +34,7 @@ with open(f"{project_name}.v") as f:
 for line in lines:
     line = line.replace(",", "")
     if "// ASSIGN " in line:
+        print("im here ")
         assignment = line.split("// ASSIGN ")[1]
         pin = line.split("// ASSIGN ")[0].split()[-1]
         
@@ -60,6 +61,7 @@ with open(f"{project_name}.qsf", "w") as f:
     assignments_written = False
     
     for line in lines:
+        print(line)
         if "set_location_assignment " in line:
             if assignments_written:
                 continue
