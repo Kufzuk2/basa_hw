@@ -1,5 +1,5 @@
 Analysis & Synthesis report for num_syst
-Thu Oct 31 15:09:20 2024
+Sat Nov 02 17:04:50 2024
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -10,7 +10,25 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd
+ 11. Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[1].dd_iter_i
+ 12. Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[2].dd_iter_i
+ 13. Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[3].dd_iter_i
+ 14. Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[4].dd_iter_i
+ 15. Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[5].dd_iter_i
+ 16. Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[6].dd_iter_i
+ 17. Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[7].dd_iter_i
+ 18. Port Connectivity Checks: "double_dabble:vin_to_bcd|dd_iter:iter_gen[7].dd_iter_i"
+ 19. Port Connectivity Checks: "double_dabble:vin_to_bcd|dd_iter:iter_gen[1].dd_iter_i"
+ 20. Port Connectivity Checks: "double_dabble:vin_to_bcd"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
 
 
 
@@ -37,20 +55,20 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Thu Oct 31 15:09:20 2024           ;
+; Analysis & Synthesis Status        ; Successful - Sat Nov 02 17:04:50 2024       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; num_syst                                    ;
 ; Top-level Entity Name              ; num_syst                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 132                                         ;
+;     Total combinational functions  ; 128                                         ;
+;     Dedicated logic registers      ; 35                                          ;
+; Total registers                    ; 35                                          ;
+; Total pins                         ; 48                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -145,15 +163,253 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 2           ;
-; Maximum allowed            ; 2           ;
+; Number detected on machine ; 24          ;
+; Maximum allowed            ; 12          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 12          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processors 2-12        ;   0.0%      ;
 +----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                ;
++---------------------------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                                          ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                   ; Library ;
++---------------------------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+; //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/num_syst.v ; yes             ; User Verilog HDL File        ; //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/num_syst.v      ;         ;
+; //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/decoder.v  ; yes             ; User Verilog HDL File        ; //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/decoder.v       ;         ;
+; dd_iter.v                                                                 ; yes             ; Auto-Found Verilog HDL File  ; //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/dd_iter.v       ;         ;
+; double_dabble.v                                                           ; yes             ; Auto-Found Verilog HDL File  ; //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/double_dabble.v ;         ;
++---------------------------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                     ;
++---------------------------------------------+-------------------+
+; Resource                                    ; Usage             ;
++---------------------------------------------+-------------------+
+; Estimated Total logic elements              ; 132               ;
+;                                             ;                   ;
+; Total combinational functions               ; 128               ;
+; Logic element usage by number of LUT inputs ;                   ;
+;     -- 4 input functions                    ; 102               ;
+;     -- 3 input functions                    ; 13                ;
+;     -- <=2 input functions                  ; 13                ;
+;                                             ;                   ;
+; Logic elements by mode                      ;                   ;
+;     -- normal mode                          ; 128               ;
+;     -- arithmetic mode                      ; 0                 ;
+;                                             ;                   ;
+; Total registers                             ; 35                ;
+;     -- Dedicated logic registers            ; 35                ;
+;     -- I/O registers                        ; 0                 ;
+;                                             ;                   ;
+; I/O pins                                    ; 48                ;
+;                                             ;                   ;
+; Embedded Multiplier 9-bit elements          ; 0                 ;
+;                                             ;                   ;
+; Maximum fan-out node                        ; switches[4]~input ;
+; Maximum fan-out                             ; 39                ;
+; Total fan-out                               ; 671               ;
+; Average fan-out                             ; 2.59              ;
++---------------------------------------------+-------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                              ; Entity Name   ; Library Name ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------+---------------+--------------+
+; |num_syst                             ; 128 (57)            ; 35 (35)                   ; 0           ; 0            ; 0       ; 0         ; 48   ; 0            ; |num_syst                                                        ; num_syst      ; work         ;
+;    |decoder:dec_dec_left|             ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |num_syst|decoder:dec_dec_left                                   ; decoder       ; work         ;
+;    |decoder:dec_dec_right|            ; 31 (31)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |num_syst|decoder:dec_dec_right                                  ; decoder       ; work         ;
+;    |decoder:dec_hex_left|             ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |num_syst|decoder:dec_hex_left                                   ; decoder       ; work         ;
+;    |decoder:dec_hex_right|            ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |num_syst|decoder:dec_hex_right                                  ; decoder       ; work         ;
+;    |double_dabble:vin_to_bcd|         ; 25 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |num_syst|double_dabble:vin_to_bcd                               ; double_dabble ; work         ;
+;       |dd_iter:iter_gen[3].dd_iter_i| ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |num_syst|double_dabble:vin_to_bcd|dd_iter:iter_gen[3].dd_iter_i ; dd_iter       ; work         ;
+;       |dd_iter:iter_gen[4].dd_iter_i| ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |num_syst|double_dabble:vin_to_bcd|dd_iter:iter_gen[4].dd_iter_i ; dd_iter       ; work         ;
+;       |dd_iter:iter_gen[5].dd_iter_i| ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |num_syst|double_dabble:vin_to_bcd|dd_iter:iter_gen[5].dd_iter_i ; dd_iter       ; work         ;
+;       |dd_iter:iter_gen[6].dd_iter_i| ; 8 (8)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |num_syst|double_dabble:vin_to_bcd|dd_iter:iter_gen[6].dd_iter_i ; dd_iter       ; work         ;
+;       |dd_iter:iter_gen[7].dd_iter_i| ; 6 (6)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |num_syst|double_dabble:vin_to_bcd|dd_iter:iter_gen[7].dd_iter_i ; dd_iter       ; work         ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 35    ;
+; Number of registers using Synchronous Clear  ; 14    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 29    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 18:1               ; 2 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; Yes        ; |num_syst|HEX4[0]~reg0     ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; Yes        ; |num_syst|HEX5[0]~reg0     ;
+; 19:1               ; 2 bits    ; 24 LEs        ; 20 LEs               ; 4 LEs                  ; Yes        ; |num_syst|HEX7[0]~reg0     ;
+; 259:1              ; 2 bits    ; 344 LEs       ; 272 LEs              ; 72 LEs                 ; Yes        ; |num_syst|HEX6[3]~reg0     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd ;
++----------------+-------+----------------------------------------------+
+; Parameter Name ; Value ; Type                                         ;
++----------------+-------+----------------------------------------------+
+; BIN_LEN        ; 8     ; Signed Integer                               ;
+; BCD_LEN        ; 12    ; Signed Integer                               ;
++----------------+-------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[1].dd_iter_i ;
++----------------+-------+----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                       ;
++----------------+-------+----------------------------------------------------------------------------+
+; BIN_LEN        ; 8     ; Signed Integer                                                             ;
+; BCD_LEN        ; 12    ; Signed Integer                                                             ;
++----------------+-------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[2].dd_iter_i ;
++----------------+-------+----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                       ;
++----------------+-------+----------------------------------------------------------------------------+
+; BIN_LEN        ; 8     ; Signed Integer                                                             ;
+; BCD_LEN        ; 12    ; Signed Integer                                                             ;
++----------------+-------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[3].dd_iter_i ;
++----------------+-------+----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                       ;
++----------------+-------+----------------------------------------------------------------------------+
+; BIN_LEN        ; 8     ; Signed Integer                                                             ;
+; BCD_LEN        ; 12    ; Signed Integer                                                             ;
++----------------+-------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[4].dd_iter_i ;
++----------------+-------+----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                       ;
++----------------+-------+----------------------------------------------------------------------------+
+; BIN_LEN        ; 8     ; Signed Integer                                                             ;
+; BCD_LEN        ; 12    ; Signed Integer                                                             ;
++----------------+-------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[5].dd_iter_i ;
++----------------+-------+----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                       ;
++----------------+-------+----------------------------------------------------------------------------+
+; BIN_LEN        ; 8     ; Signed Integer                                                             ;
+; BCD_LEN        ; 12    ; Signed Integer                                                             ;
++----------------+-------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[6].dd_iter_i ;
++----------------+-------+----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                       ;
++----------------+-------+----------------------------------------------------------------------------+
+; BIN_LEN        ; 8     ; Signed Integer                                                             ;
+; BCD_LEN        ; 12    ; Signed Integer                                                             ;
++----------------+-------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: double_dabble:vin_to_bcd|dd_iter:iter_gen[7].dd_iter_i ;
++----------------+-------+----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                       ;
++----------------+-------+----------------------------------------------------------------------------+
+; BIN_LEN        ; 8     ; Signed Integer                                                             ;
+; BCD_LEN        ; 12    ; Signed Integer                                                             ;
++----------------+-------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "double_dabble:vin_to_bcd|dd_iter:iter_gen[7].dd_iter_i"                                                ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                    ; Type   ; Severity ; Details                                                                             ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; bcd_with_bin_next[7..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "double_dabble:vin_to_bcd|dd_iter:iter_gen[1].dd_iter_i" ;
++--------------------------+-------+----------+--------------------------------------+
+; Port                     ; Type  ; Severity ; Details                              ;
++--------------------------+-------+----------+--------------------------------------+
+; bcd_with_bin_prev[19..9] ; Input ; Info     ; Stuck at GND                         ;
+; bcd_with_bin_prev[0]     ; Input ; Info     ; Stuck at GND                         ;
++--------------------------+-------+----------+--------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "double_dabble:vin_to_bcd"                                                                 ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; bcd[11..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 48                          ;
+; cycloneiii_ff         ; 35                          ;
+;     ENA               ; 15                          ;
+;     ENA SCLR          ; 14                          ;
+;     plain             ; 6                           ;
+; cycloneiii_lcell_comb ; 128                         ;
+;     normal            ; 128                         ;
+;         2 data inputs ; 13                          ;
+;         3 data inputs ; 13                          ;
+;         4 data inputs ; 102                         ;
+;                       ;                             ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.32                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
 
 
 +-------------------------------+
@@ -162,29 +418,32 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Oct 31 15:08:46 2024
+    Info: Processing started: Sat Nov 02 17:04:35 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off num_syst -c num_syst
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
-Error (10170): Verilog HDL syntax error at num_syst.v(69) near text: "dec_hex_right";  expecting "<=", or "=". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 69
-Error (10170): Verilog HDL syntax error at num_syst.v(75) near text: "dec_hex_left";  expecting "<=", or "=". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 75
-Error (10170): Verilog HDL syntax error at num_syst.v(81) near text: "dec_dec_right";  expecting "<=", or "=". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 81
-Error (10170): Verilog HDL syntax error at num_syst.v(87) near text: "dec_dec_left";  expecting "<=", or "=". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 87
-Error (10170): Verilog HDL syntax error at num_syst.v(95) near text: "always";  expecting "end". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 95
-Error (10170): Verilog HDL syntax error at num_syst.v(100) near text: "always";  expecting "end". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 100
-Error (10170): Verilog HDL syntax error at num_syst.v(105) near text: "always";  expecting "end". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 105
-Error (10170): Verilog HDL syntax error at num_syst.v(110) near text: "always";  expecting "end". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 110
-Error (10170): Verilog HDL syntax error at num_syst.v(115) near text: "always";  expecting "end". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 115
-Error (10170): Verilog HDL syntax error at num_syst.v(126) near text: "vin_to_bcd";  expecting "<=", or "=". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 126
-Error (10170): Verilog HDL syntax error at num_syst.v(154) near text: "always";  expecting "end". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 154
-Error (10170): Verilog HDL syntax error at num_syst.v(166) near text: "endmodule";  expecting "end". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/progs/rtl/basa_hw/fpga/num_syst/num_syst.v Line: 166
-Info (12021): Found 0 design units, including 0 entities, in source file num_syst.v
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 3 design units, including 3 entities, in source file num_syst.v
+    Info (12023): Found entity 1: dd_iter File: //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/dd_iter.v Line: 1
+    Info (12023): Found entity 2: double_dabble File: //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/double_dabble.v Line: 1
+    Info (12023): Found entity 3: num_syst File: //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/num_syst.v Line: 7
 Info (12021): Found 1 design units, including 1 entities, in source file decoder.v
-    Info (12023): Found entity 1: decoder File: C:/progs/rtl/basa_hw/fpga/num_syst/decoder.v Line: 1
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 12 errors, 1 warning
-    Error: Peak virtual memory: 4712 megabytes
-    Error: Processing ended: Thu Oct 31 15:09:20 2024
-    Error: Elapsed time: 00:00:34
-    Error: Total CPU time (on all processors): 00:00:48
+    Info (12023): Found entity 1: decoder File: //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/decoder.v Line: 1
+Info (12127): Elaborating entity "num_syst" for the top level hierarchy
+Info (12128): Elaborating entity "decoder" for hierarchy "decoder:dec_hex_right" File: //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/num_syst.v Line: 79
+Warning (10230): Verilog HDL assignment warning at decoder.v(8): truncated value with size 32 to match size of target (7) File: //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/decoder.v Line: 8
+Info (12128): Elaborating entity "double_dabble" for hierarchy "double_dabble:vin_to_bcd" File: //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/num_syst.v Line: 138
+Info (12128): Elaborating entity "dd_iter" for hierarchy "double_dabble:vin_to_bcd|dd_iter:iter_gen[1].dd_iter_i" File: //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/double_dabble.v Line: 24
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 180 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
+    Info (21059): Implemented 37 output pins
+    Info (21061): Implemented 132 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 4828 megabytes
+    Info: Processing ended: Sat Nov 02 17:04:50 2024
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:28
 
 

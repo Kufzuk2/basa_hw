@@ -3,7 +3,7 @@
 `define DISPLAY_OVERFLOW ~7'b1100011
 `include "dd_iter.v"
 `include "double_dabble.v"
-`include "decoder.v"
+
 module num_syst
 (
     input   clk,  // ASSIGN CLOCK_50

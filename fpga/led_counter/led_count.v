@@ -1,11 +1,11 @@
-module counter
+module led_count
 (
     input  wire  clk,
     input  wire KEY0,  // reset
     input  wire KEY1,  // inc
     input  wire KEY2,  // dec
 
-    output wire [9: 0] LEDG
+    output wire [8: 0] LEDG
 );
 
     reg  [8: 0]   counter;
@@ -36,7 +36,7 @@ module counter
 
     //inc
     always @(posedge clk) begin
-        but1_1 <=   KEY0;
+        but1_1 <=   KEY1;
         but1_2 <= but1_1;
     end
     always @(posedge clk)
@@ -45,7 +45,7 @@ module counter
 
     //dec
     always @(posedge clk) begin
-        but2_1 <=   KEY0;
+        but2_1 <=   KEY2;
         but2_2 <= but2_1;
     end
     always @(posedge clk)
