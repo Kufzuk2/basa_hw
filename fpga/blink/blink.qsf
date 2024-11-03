@@ -53,3 +53,21 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_location_assignment PIN_Y2 -to clk
+set_location_assignment PIN_M23 -to KEY0
+set_location_assignment PIN_M21 -to KEY1
+set_location_assignment PIN_AB28 -to switches[0]
+set_location_assignment PIN_AC28 -to switches[1]
+set_location_assignment PIN_AC27 -to switches[2]
+set_location_assignment PIN_AD27 -to switches[3]
+set_location_assignment PIN_AB27 -to switches[4]
+set_location_assignment PIN_AC26 -to switches[5]
+set_location_assignment PIN_AD26 -to switches[6]
+set_location_assignment PIN_AB26 -to switches[7]
+set_location_assignment PIN_AC25 -to switches[8]
+set_location_assignment PIN_AB25 -to switches[9]
+set_location_assignment PIN_AC24 -to switches[10]
+set_location_assignment PIN_AB24 -to switches[11]
+set_location_assignment PIN_AB23 -to switches[12]
+set_location_assignment PIN_AA24 -to switches[13]
+set_location_assignment PIN_F17 -to LEDG8
