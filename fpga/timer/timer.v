@@ -12,6 +12,7 @@ module timer
     input wire KEY0, //reset
     input wire KEY1, //start stop
     input wire KEY2, //write
+    input wire KEY3, //show
     
 
     output  reg [6: 0] HEX0, // split sec
@@ -34,7 +35,22 @@ module timer
     wire [3: 0]  s_dec_tmp;
 
     reg work; //1 if timer is working now
-    
+    reg [2: 0] show_cnt;
+
+
+    // remembered timings
+/*
+    reg [3: 0]  r_left_0;
+    reg [3: 0]  r_left_1;
+    reg [3: 0]  r_left_2;
+    reg [3: 0]  r_left_3;
+    reg [3: 0] r_right_0;
+    reg [3: 0] r_right_1;
+    reg [3: 0] r_right_2;
+    reg [3: 0] r_right_3;
+*/
+
+
     wire [6: 0] hex0_loc;
     wire [6: 0] hex1_loc;
     wire [6: 0] hex2_loc;
@@ -67,6 +83,20 @@ module timer
         .hex_num(s_dec_count)
     );
 
+    decoder for_cur_remembered_right
+    (
+        .HEX0(hex1_show),
+        .hex_num(cur_show1)
+    );
+
+    decoder for_cur_remembered_left
+    (
+        .HEX0(hex2_show),
+        .hex_num(cur_show2)
+    );
+
+
+
     wire imp;
 
     freq_del
@@ -82,8 +112,6 @@ module timer
     reg rst_push_2;
     reg rst;
 
-    reg hold_rst;
-    reg hold_start;
 
     reg start_push_1;
     reg start_push_2;
@@ -92,7 +120,16 @@ module timer
     reg write_push_1;
     reg write_push_2;
     reg write;
+    
+    reg show_push_1;
+    reg show_push_2;
+    reg show;
 
+
+//************************************************************************************************
+/////  buttons logic
+//************************************************************************************************
+//
     // syncr reset button logic
     always @(posedge clk) begin
         rst_push_1 <=       KEY0;
@@ -122,30 +159,27 @@ module timer
     always @(posedge clk)
         write <= ~write_push_1 & write_push_2;
 
-
-// hold rst logic
-
+    // syncr show button logic
     always @(posedge clk) begin
-        if (rst)
-            hold_rst <= 1;
-        else
-            hold_rst <= (imp) ? 0 : hold_rst;
+        show_push_1 <=        KEY3;
+        show_push_2 <= show_push_1;
     end
 
-    always @(posedge clk) begin
-        if (start)
-            hold_start <= 1;
-        else
-            hold_start <= (imp & ~work) ? 0 : hold_rst;
-    end
+    always @(posedge clk)
+        show <= ~show_push_1 & show_push_2;
+//************************************************************************************************
 
-    
+
+//************************************************************************************************
+/// time count logic
+//************************************************************************************************
     always @(posedge clk) begin // offset 1 extra cycle /////// is it bad????? seems not
         if (rst)
             work <= 0;
         else
             work <= start ? ~work : work;
     end
+
 
     always @(posedge imp) begin
         if (rst)
@@ -173,8 +207,68 @@ module timer
                              overflow_dec & overflow_unit & overflow_split ? 4'h0                :
                              s_dec_count + 1;
     end
+//************************************************************************************************
+
+    
 
 
+// QUESTION    ???????????????    MASK AND 1 LONG REG INSTEAD OF NUMEROUS ALWAYS BLOCKS AND REGS
+
+//************************************************************************************************
+//// remembered timings logic
+//************************************************************************************************
+    always @(posedge imp) begin
+        if (rst)
+            show_cnt <= 0;
+        else
+            show_cnt <= ~(show /*& ~work*/) ? show_cnt     :
+                        show_cnt != 'h4 ? show_cnt + 1 :
+                                                     0 ;
+    end // only when timer is stopped
+
+
+    reg [3: 0]  r_left [3: 0];
+    reg [3: 0] r_right [3: 0];
+    
+
+    genvar i;
+    generate
+        for (i = 0; i < 4; i = i + 1) begin : remembered_timings
+            always @(posedge clk) begin
+                if (rst) begin
+                    r_left [i] <= 0;
+                    r_right[i] <= 0;
+                end else begin
+                    if (i == 0) begin
+                        r_left [i] <= write & !r_left [i] ?  s_dec_count :  r_left[i];
+                        r_right[i] <= write & !r_right[i] ? s_unit_count : r_right[i];
+                    end else begin
+                    r_left [i] <= write & r_left [i - 1] & !r_left [i] ?  s_dec_count :  r_left[i];
+                    r_right[i] <= write & r_right[i - 1] & !r_right[i] ? s_unit_count : r_right[i];
+                    end
+                end
+            end
+
+
+        end     
+    endgenerate // 0000 will not be written
+
+//************************************************************************************************
+
+
+//************************************************************************************************
+//display logic
+//************************************************************************************************
+    wire [6 : 0] hex1_show;
+    wire [6 : 0] hex2_show;
+    wire [3 : 0] cur_show1;
+    wire [3 : 0] cur_show2;
+
+    assign cur_show1 = r_right[show_cnt];
+    assign cur_show2 =  r_left[show_cnt];
+
+    // if timer continued during show of old records semseg will not change,
+    // time wil be calculatinf next
     always @(posedge clk)
         if (rst) begin
             HEX0 <= `DISPLAY_0;  
@@ -182,8 +276,14 @@ module timer
             HEX2 <= `DISPLAY_0;  
         end else begin
             HEX0 <= hex0_loc;  
-            HEX1 <= hex1_loc;  
-            HEX2 <= hex2_loc;  
+
+            HEX1 <= work ? hex1_loc  :
+                    show ? hex1_show :
+                                HEX1 ;
+        
+            HEX2 <= work ? hex2_loc  :
+                    show ? hex2_show :
+                                HEX2 ;
         end
 
 

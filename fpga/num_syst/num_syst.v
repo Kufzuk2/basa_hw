@@ -134,7 +134,7 @@ module num_syst
 	double_dabble vin_to_bcd
 	(
 		.bin(switches),
-		.bcd({dec_hundr, dec_in_hex[7: 4], dec_in_hex[3: 0]})
+		.bcd({dec_in_hex[7: 4], dec_in_hex[3: 0]})
 	);
 	
 	
