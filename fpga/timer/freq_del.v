@@ -5,9 +5,7 @@ module freq_del
 (
     input  wire     clk,
     input  wire   reset,
-    input  wire   start,
-    input  wire    work,
-
+    
     output wire clk_div
 );
     
@@ -18,11 +16,9 @@ module freq_del
 
     assign clk_div = (counter > COUNT_BOARDER);
     always @(posedge clk) begin
-        if (reset | start)
+        if (reset)
             counter <= 0;
         else
-            counter <= ~work ? counter : 
-                       (counter == EVEN_DIV - 1) ? 'h0 : 
-                        counter + 'h1;
+            counter <= (counter == EVEN_DIV - 1) ? 'h0 : counter + 'h1;
     end
 endmodule
