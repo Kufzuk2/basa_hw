@@ -1,24 +1,28 @@
 module freq_del
 #(
-    parameter EVEN_DIV = 6
+    parameter IMP_WAIT = 5
 )
 (
     input  wire     clk,
     input  wire   reset,
     
-    output wire clk_div
+    output wire     imp
 );
     
-    localparam  COUNTER_SIZE = $clog2(EVEN_DIV);
-    localparam COUNT_BOARDER = EVEN_DIV / 2 - 1;
-    
-    output reg [COUNTER_SIZE - 1: 0]    counter;
 
-    assign clk_div = (counter > COUNT_BOARDER);
-    always @(posedge clk) begin
+/////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+		localparam count_size = $clog2(50000000);
+    reg [count_size - 1: 0] counter2;
+
+    // impulse every IMP_WAIT cycles
+    assign imp = (counter2 == (IMP_WAIT - 1));
+    always @(posedge clk)
         if (reset)
-            counter <= 0;
+            counter2 <= 0;
         else
-            counter <= (counter == EVEN_DIV - 1) ? 'h0 : counter + 'h1;
-    end
+            counter2 <= (counter2 == (IMP_WAIT - 1)) ? 'h0 : counter2 + 'h1;
+
 endmodule
