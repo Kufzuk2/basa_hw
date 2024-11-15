@@ -1,8 +1,8 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="5a5d4fefe5ba6a9923bb"/>
+    <hash md5_digest_80b="c93603a7da97c02927cb"/>
   </project>
   <file_info>
-    <file device="EP4CE115F29C7" path="//wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/led_counter/output_files/led_count.sof" usercode="0xFFFFFFFF"/>
+    <file device="EP4CE115F29C7" path="led_count.sof" usercode="0xFFFFFFFF"/>
   </file_info>
 </sld_project_info>

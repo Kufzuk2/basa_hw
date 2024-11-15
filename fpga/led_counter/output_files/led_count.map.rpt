@@ -1,5 +1,5 @@
 Analysis & Synthesis report for led_count
-Sat Nov 02 16:53:10 2024
+Thu Nov 14 14:30:05 2024
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -14,10 +14,9 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+  9. Post-Synthesis Netlist Statistics for Top Partition
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -44,13 +43,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Nov 02 16:53:10 2024       ;
+; Analysis & Synthesis Status        ; Successful - Thu Nov 14 14:30:05 2024       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; led_count                                   ;
 ; Top-level Entity Name              ; led_count                                   ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 19                                          ;
-;     Total combinational functions  ; 13                                          ;
+; Total logic elements               ; 35                                          ;
+;     Total combinational functions  ; 29                                          ;
 ;     Dedicated logic registers      ; 18                                          ;
 ; Total registers                    ; 18                                          ;
 ; Total pins                         ; 13                                          ;
@@ -152,25 +151,25 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 24          ;
-; Maximum allowed            ; 12          ;
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 12          ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-12        ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                             ;
-+-------------------------------------------------------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path                                              ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                  ; Library ;
-+-------------------------------------------------------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------+---------+
-; //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/led_counter/led_count.v ; yes             ; User Verilog HDL File  ; //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/led_counter/led_count.v ;         ;
-+-------------------------------------------------------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                    ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                      ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
+; led_count.v                      ; yes             ; User Verilog HDL File  ; C:/progs/rtl/basa_hw/fpga/led_counter/led_count.v ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
 
 
 +---------------------------------------------------------+
@@ -178,17 +177,17 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 19        ;
+; Estimated Total logic elements              ; 35        ;
 ;                                             ;           ;
-; Total combinational functions               ; 13        ;
+; Total combinational functions               ; 29        ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 0         ;
-;     -- 3 input functions                    ; 8         ;
-;     -- <=2 input functions                  ; 5         ;
+;     -- 4 input functions                    ; 19        ;
+;     -- 3 input functions                    ; 7         ;
+;     -- <=2 input functions                  ; 3         ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 5         ;
-;     -- arithmetic mode                      ; 8         ;
+;     -- normal mode                          ; 29        ;
+;     -- arithmetic mode                      ; 0         ;
 ;                                             ;           ;
 ; Total registers                             ; 18        ;
 ;     -- Dedicated logic registers            ; 18        ;
@@ -200,8 +199,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 18        ;
-; Total fan-out                               ; 110       ;
-; Average fan-out                             ; 1.93      ;
+; Total fan-out                               ; 161       ;
+; Average fan-out                             ; 2.21      ;
 +---------------------------------------------+-----------+
 
 
@@ -210,7 +209,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
-; |led_count                 ; 13 (13)             ; 18 (18)                   ; 0           ; 0            ; 0       ; 0         ; 13   ; 0            ; |led_count          ; led_count   ; work         ;
+; |led_count                 ; 29 (29)             ; 18 (18)                   ; 0           ; 0            ; 0       ; 0         ; 13   ; 0            ; |led_count          ; led_count   ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -221,22 +220,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 18    ;
-; Number of registers using Synchronous Clear  ; 9     ;
+; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 9     ;
+; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |led_count|counter[0]      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +-----------------------------------------------------+
@@ -246,18 +236,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; boundary_port         ; 13                          ;
 ; cycloneiii_ff         ; 18                          ;
-;     ENA SCLR          ; 9                           ;
-;     plain             ; 9                           ;
-; cycloneiii_lcell_comb ; 13                          ;
-;     arith             ; 8                           ;
-;         2 data inputs ; 1                           ;
+;     plain             ; 18                          ;
+; cycloneiii_lcell_comb ; 29                          ;
+;     normal            ; 29                          ;
+;         2 data inputs ; 3                           ;
 ;         3 data inputs ; 7                           ;
-;     normal            ; 5                           ;
-;         2 data inputs ; 4                           ;
-;         3 data inputs ; 1                           ;
+;         4 data inputs ; 19                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 1.80                        ;
-; Average LUT depth     ; 1.24                        ;
+; Max LUT depth         ; 3.00                        ;
+; Average LUT depth     ; 2.18                        ;
 +-----------------------+-----------------------------+
 
 
@@ -266,7 +253,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -276,25 +263,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Sat Nov 02 16:52:57 2024
+    Info: Processing started: Thu Nov 14 14:29:26 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off led_count -c led_count
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file led_count.v
-    Info (12023): Found entity 1: led_count File: //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/led_counter/led_count.v Line: 1
+    Info (12023): Found entity 1: led_count File: C:/progs/rtl/basa_hw/fpga/led_counter/led_count.v Line: 1
 Info (12127): Elaborating entity "led_count" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at led_count.v(62): truncated value with size 32 to match size of target (9) File: //wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/led_counter/led_count.v Line: 62
+Warning (10230): Verilog HDL assignment warning at led_count.v(74): truncated value with size 32 to match size of target (1) File: C:/progs/rtl/basa_hw/fpga/led_counter/led_count.v Line: 74
+Warning (10230): Verilog HDL assignment warning at led_count.v(81): truncated value with size 32 to match size of target (1) File: C:/progs/rtl/basa_hw/fpga/led_counter/led_count.v Line: 81
+Warning (10230): Verilog HDL assignment warning at led_count.v(77): truncated value with size 32 to match size of target (1) File: C:/progs/rtl/basa_hw/fpga/led_counter/led_count.v Line: 77
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 32 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 48 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 9 output pins
-    Info (21061): Implemented 19 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4827 megabytes
-    Info: Processing ended: Sat Nov 02 16:53:10 2024
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:25
+    Info (21061): Implemented 35 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 4743 megabytes
+    Info: Processing ended: Thu Nov 14 14:30:06 2024
+    Info: Elapsed time: 00:00:40
+    Info: Total CPU time (on all processors): 00:00:16
 
 

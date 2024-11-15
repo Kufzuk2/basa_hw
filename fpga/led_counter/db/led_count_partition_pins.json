@@ -48,11 +48,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "KEY1",
+					"name" : "KEY2",
 					"strict" : false
 				},
 				{
-					"name" : "KEY2",
+					"name" : "KEY1",
 					"strict" : false
 				}
 			]

@@ -1,5 +1,5 @@
 Timing Analyzer report for num_syst
-Sat Nov 02 17:05:25 2024
+Thu Nov 14 11:37:19 2024
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -96,15 +96,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 24          ;
-; Maximum allowed            ; 12          ;
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
 ;                            ;             ;
-; Average used               ; 1.02        ;
-; Maximum used               ; 12          ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-12        ;   0.2%      ;
+;     Processor 2            ;   0.6%      ;
 +----------------------------+-------------+
 
 
@@ -122,7 +122,7 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+------------+---------------------------------------------------------------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
 +------------+-----------------+------------+---------------------------------------------------------------+
-; 416.49 MHz ; 250.0 MHz       ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 471.25 MHz ; 250.0 MHz       ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
 +------------+-----------------+------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -138,7 +138,7 @@ HTML report is unavailable in plain text report export.
 +-------+--------+--------------------+
 ; Clock ; Slack  ; End Point TNS      ;
 +-------+--------+--------------------+
-; clk   ; -1.401 ; -26.291            ;
+; clk   ; -1.122 ; -26.432            ;
 +-------+--------+--------------------+
 
 
@@ -147,7 +147,7 @@ HTML report is unavailable in plain text report export.
 +-------+-------+--------------------+
 ; Clock ; Slack ; End Point TNS      ;
 +-------+-------+--------------------+
-; clk   ; 0.452 ; 0.000              ;
+; clk   ; 0.451 ; 0.000              ;
 +-------+-------+--------------------+
 
 
@@ -177,70 +177,70 @@ No paths to report.
 +--------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node    ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+--------------+--------------+--------------+-------------+--------------+------------+------------+
-; -1.401 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 2.320      ;
-; -1.125 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.041      ;
-; -1.030 ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 1.946      ;
-; -1.020 ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.939      ;
-; -1.020 ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.939      ;
-; -1.020 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.939      ;
-; -1.020 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.939      ;
-; -1.020 ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.939      ;
-; -1.020 ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.939      ;
-; -1.020 ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.939      ;
-; -0.926 ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.926 ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.926 ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.926 ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.926 ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.926 ; trans_pushed ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.926 ; trans_pushed ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.926 ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.926 ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.926 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.926 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.080     ; 1.844      ;
-; -0.925 ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.844      ;
-; -0.925 ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.844      ;
-; -0.925 ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.844      ;
-; -0.925 ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.844      ;
-; -0.925 ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.844      ;
-; -0.925 ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.079     ; 1.844      ;
-; -0.831 ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.831 ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.831 ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.831 ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.831 ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.831 ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.831 ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.831 ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.831 ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.831 ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.831 ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.080     ; 1.749      ;
-; -0.670 ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 2.002      ;
-; -0.670 ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 2.002      ;
-; -0.670 ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 2.002      ;
-; -0.670 ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 2.002      ;
-; -0.670 ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 2.002      ;
-; -0.670 ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 2.002      ;
-; -0.670 ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 2.002      ;
-; -0.670 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 2.002      ;
-; -0.670 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 2.002      ;
-; -0.670 ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 2.002      ;
-; -0.575 ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.907      ;
-; -0.575 ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.907      ;
-; -0.575 ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.907      ;
-; -0.575 ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.907      ;
-; -0.575 ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.907      ;
-; -0.575 ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.907      ;
-; -0.575 ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.907      ;
-; -0.575 ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.907      ;
-; -0.575 ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.907      ;
-; -0.575 ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.907      ;
-; -0.321 ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.081     ; 1.238      ;
-; -0.222 ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 1.000        ; -0.080     ; 1.140      ;
-; -0.216 ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.081     ; 1.133      ;
-; -0.081 ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.081     ; 0.998      ;
-; -0.053 ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.081     ; 0.970      ;
-; 0.105  ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 1.000        ; -0.080     ; 0.813      ;
+; -1.122 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 2.039      ;
+; -1.122 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 2.039      ;
+; -1.122 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 2.039      ;
+; -1.122 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 2.039      ;
+; -1.122 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 2.039      ;
+; -1.122 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.081     ; 2.039      ;
+; -1.112 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.030      ;
+; -1.006 ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.923      ;
+; -1.006 ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.923      ;
+; -1.006 ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.923      ;
+; -1.006 ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.923      ;
+; -1.006 ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.923      ;
+; -1.006 ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.081     ; 1.923      ;
+; -0.996 ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 1.914      ;
+; -0.926 ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.926 ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.843      ;
+; -0.810 ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.810 ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 1.727      ;
+; -0.653 ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.985      ;
+; -0.653 ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.985      ;
+; -0.653 ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.985      ;
+; -0.653 ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.985      ;
+; -0.653 ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.985      ;
+; -0.653 ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.985      ;
+; -0.653 ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.985      ;
+; -0.643 ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.336      ; 1.977      ;
+; -0.643 ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.336      ; 1.977      ;
+; -0.643 ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.336      ; 1.977      ;
+; -0.537 ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.869      ;
+; -0.537 ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.869      ;
+; -0.537 ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.869      ;
+; -0.537 ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.869      ;
+; -0.537 ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.869      ;
+; -0.537 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.869      ;
+; -0.537 ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.334      ; 1.869      ;
+; -0.527 ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.336      ; 1.861      ;
+; -0.527 ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.336      ; 1.861      ;
+; -0.527 ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.336      ; 1.861      ;
+; -0.502 ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.088     ; 1.412      ;
+; -0.474 ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.088     ; 1.384      ;
+; -0.355 ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.088     ; 1.265      ;
+; -0.348 ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.088     ; 1.258      ;
+; 0.103  ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 1.000        ; -0.081     ; 0.814      ;
+; 0.104  ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 1.000        ; -0.081     ; 0.813      ;
 +--------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -249,70 +249,70 @@ No paths to report.
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node    ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
-; 0.452 ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 0.000        ; 0.080      ; 0.718      ;
-; 0.578 ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 1.275      ;
-; 0.578 ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 1.275      ;
-; 0.578 ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 1.275      ;
-; 0.578 ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 1.275      ;
-; 0.578 ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 1.275      ;
-; 0.578 ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 1.275      ;
-; 0.578 ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 1.275      ;
-; 0.623 ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.079      ; 0.888      ;
-; 0.636 ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.079      ; 0.901      ;
-; 0.647 ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.078      ; 0.911      ;
-; 0.666 ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.933      ;
-; 0.667 ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 1.364      ;
-; 0.676 ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.943      ;
-; 0.692 ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 1.389      ;
-; 0.692 ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 1.389      ;
-; 0.757 ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.023      ;
-; 0.757 ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.079      ; 1.022      ;
-; 0.831 ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.079      ; 1.096      ;
-; 0.846 ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.112      ;
-; 0.846 ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.112      ;
-; 0.846 ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.112      ;
-; 0.846 ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.112      ;
-; 0.846 ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.112      ;
-; 0.846 ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.112      ;
-; 0.846 ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.112      ;
-; 0.992 ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.258      ;
-; 1.005 ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.271      ;
-; 1.032 ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.299      ;
-; 1.032 ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.299      ;
-; 1.084 ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.350      ;
-; 1.108 ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.375      ;
-; 1.110 ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.377      ;
-; 1.196 ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.462      ;
-; 1.315 ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 2.012      ;
-; 1.315 ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 2.012      ;
-; 1.315 ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 2.012      ;
-; 1.315 ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 2.012      ;
-; 1.315 ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 2.012      ;
-; 1.315 ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 2.012      ;
-; 1.315 ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 2.012      ;
-; 1.315 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 2.012      ;
-; 1.315 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 2.012      ;
-; 1.315 ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.511      ; 2.012      ;
-; 1.575 ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; trans_pushed ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; trans_pushed ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.610 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.877      ;
-; 1.705 ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.972      ;
-; 1.705 ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.972      ;
-; 1.705 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.972      ;
-; 1.705 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.972      ;
-; 1.705 ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.972      ;
-; 1.705 ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.972      ;
-; 1.705 ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.972      ;
-; 1.781 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.078      ; 2.045      ;
+; 0.451 ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 0.000        ; 0.081      ; 0.718      ;
+; 0.452 ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.719      ;
+; 0.510 ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 1.208      ;
+; 0.617 ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.514      ; 1.317      ;
+; 0.664 ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.931      ;
+; 0.689 ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.956      ;
+; 0.690 ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.957      ;
+; 0.690 ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.957      ;
+; 0.699 ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 0.965      ;
+; 0.700 ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 0.966      ;
+; 0.702 ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 0.968      ;
+; 0.708 ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.080      ; 0.974      ;
+; 0.710 ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 0.976      ;
+; 0.716 ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 0.982      ;
+; 0.735 ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.514      ; 1.435      ;
+; 0.788 ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.055      ;
+; 0.817 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 1.515      ;
+; 0.843 ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 1.541      ;
+; 0.843 ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 1.541      ;
+; 0.843 ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 1.541      ;
+; 0.843 ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 1.541      ;
+; 0.843 ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 1.541      ;
+; 0.867 ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.514      ; 1.567      ;
+; 0.894 ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.074      ; 1.154      ;
+; 0.901 ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.168      ;
+; 0.916 ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.074      ; 1.176      ;
+; 0.937 ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.204      ;
+; 1.008 ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.074      ; 1.268      ;
+; 1.058 ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.325      ;
+; 1.058 ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.325      ;
+; 1.058 ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.325      ;
+; 1.058 ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.325      ;
+; 1.058 ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.325      ;
+; 1.058 ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.325      ;
+; 1.058 ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.074      ; 1.318      ;
+; 1.297 ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.514      ; 1.997      ;
+; 1.297 ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.514      ; 1.997      ;
+; 1.297 ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.514      ; 1.997      ;
+; 1.305 ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 2.003      ;
+; 1.305 ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 2.003      ;
+; 1.305 ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 2.003      ;
+; 1.305 ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 2.003      ;
+; 1.305 ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 2.003      ;
+; 1.305 ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 2.003      ;
+; 1.305 ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.512      ; 2.003      ;
+; 1.573 ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.573 ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.840      ;
+; 1.771 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 2.038      ;
+; 1.778 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.044      ;
+; 1.778 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.044      ;
+; 1.778 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.044      ;
+; 1.778 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.044      ;
+; 1.778 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.044      ;
+; 1.778 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.080      ; 2.044      ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -322,13 +322,13 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+----------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 0C Model Fmax Summary                                                                        ;
-+-----------+-----------------+------------+---------------------------------------------------------------+
-; Fmax      ; Restricted Fmax ; Clock Name ; Note                                                          ;
-+-----------+-----------------+------------+---------------------------------------------------------------+
-; 452.9 MHz ; 250.0 MHz       ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
-+-----------+-----------------+------------+---------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Fmax Summary                                                                         ;
++------------+-----------------+------------+---------------------------------------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
++------------+-----------------+------------+---------------------------------------------------------------+
+; 519.75 MHz ; 250.0 MHz       ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
++------------+-----------------+------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -337,7 +337,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+--------+-------------------+
 ; Clock ; Slack  ; End Point TNS     ;
 +-------+--------+-------------------+
-; clk   ; -1.208 ; -20.947           ;
+; clk   ; -0.924 ; -21.140           ;
 +-------+--------+-------------------+
 
 
@@ -376,70 +376,70 @@ No paths to report.
 +--------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node    ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+--------------+--------------+--------------+-------------+--------------+------------+------------+
-; -1.208 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 2.137      ;
-; -0.930 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 1.856      ;
-; -0.847 ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 1.773      ;
-; -0.836 ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.765      ;
-; -0.836 ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.765      ;
-; -0.836 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.765      ;
-; -0.836 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.765      ;
-; -0.836 ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.765      ;
-; -0.836 ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.765      ;
-; -0.836 ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.765      ;
-; -0.771 ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.700      ;
-; -0.771 ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.700      ;
-; -0.771 ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.700      ;
-; -0.771 ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.700      ;
-; -0.771 ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.700      ;
-; -0.771 ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.070     ; 1.700      ;
-; -0.755 ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.755 ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.755 ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.755 ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.755 ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.755 ; trans_pushed ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.755 ; trans_pushed ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.755 ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.755 ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.755 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.755 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.071     ; 1.683      ;
-; -0.667 ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.667 ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.667 ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.667 ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.667 ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.667 ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.667 ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.667 ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.667 ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.667 ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.667 ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.071     ; 1.595      ;
-; -0.513 ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.821      ;
-; -0.513 ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.821      ;
-; -0.513 ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.821      ;
-; -0.513 ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.821      ;
-; -0.513 ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.821      ;
-; -0.513 ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.821      ;
-; -0.513 ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.821      ;
-; -0.513 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.821      ;
-; -0.513 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.821      ;
-; -0.513 ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.821      ;
-; -0.431 ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.739      ;
-; -0.431 ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.739      ;
-; -0.431 ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.739      ;
-; -0.431 ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.739      ;
-; -0.431 ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.739      ;
-; -0.431 ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.739      ;
-; -0.431 ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.739      ;
-; -0.431 ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.739      ;
-; -0.431 ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.739      ;
-; -0.431 ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.309      ; 1.739      ;
-; -0.181 ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.073     ; 1.107      ;
-; -0.091 ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 1.000        ; -0.072     ; 1.018      ;
-; -0.086 ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.073     ; 1.012      ;
-; 0.028  ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.073     ; 0.898      ;
-; 0.058  ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.073     ; 0.868      ;
-; 0.195  ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 1.000        ; -0.072     ; 0.732      ;
+; -0.924 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.851      ;
+; -0.924 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.851      ;
+; -0.924 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.851      ;
+; -0.924 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.851      ;
+; -0.924 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.851      ;
+; -0.924 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.072     ; 1.851      ;
+; -0.920 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.848      ;
+; -0.832 ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.759      ;
+; -0.832 ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.759      ;
+; -0.832 ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.759      ;
+; -0.832 ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.759      ;
+; -0.832 ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.759      ;
+; -0.832 ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.072     ; 1.759      ;
+; -0.824 ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 1.752      ;
+; -0.755 ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.755 ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.682      ;
+; -0.648 ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.648 ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 1.575      ;
+; -0.494 ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.804      ;
+; -0.494 ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.804      ;
+; -0.494 ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.804      ;
+; -0.494 ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.804      ;
+; -0.494 ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.804      ;
+; -0.494 ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.804      ;
+; -0.494 ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.804      ;
+; -0.489 ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.312      ; 1.800      ;
+; -0.489 ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.312      ; 1.800      ;
+; -0.489 ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.312      ; 1.800      ;
+; -0.407 ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.717      ;
+; -0.407 ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.717      ;
+; -0.407 ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.717      ;
+; -0.407 ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.717      ;
+; -0.407 ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.717      ;
+; -0.407 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.717      ;
+; -0.407 ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.311      ; 1.717      ;
+; -0.399 ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.312      ; 1.710      ;
+; -0.399 ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.312      ; 1.710      ;
+; -0.399 ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.312      ; 1.710      ;
+; -0.370 ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.079     ; 1.290      ;
+; -0.321 ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.079     ; 1.241      ;
+; -0.233 ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.079     ; 1.153      ;
+; -0.214 ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.079     ; 1.134      ;
+; 0.194  ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 1.000        ; -0.072     ; 0.733      ;
+; 0.195  ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 1.000        ; -0.072     ; 0.732      ;
 +--------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -449,69 +449,69 @@ No paths to report.
 ; Slack ; From Node    ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 ; 0.417 ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 0.000        ; 0.072      ; 0.660      ;
-; 0.542 ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.181      ;
-; 0.542 ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.181      ;
-; 0.542 ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.181      ;
-; 0.542 ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.181      ;
-; 0.542 ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.181      ;
-; 0.542 ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.181      ;
-; 0.542 ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.181      ;
-; 0.576 ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.070      ; 0.817      ;
-; 0.590 ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.070      ; 0.831      ;
-; 0.597 ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.069      ; 0.837      ;
-; 0.605 ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.244      ;
-; 0.612 ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 0.856      ;
-; 0.624 ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 0.868      ;
-; 0.624 ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.263      ;
-; 0.628 ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.267      ;
-; 0.706 ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 0.000        ; 0.072      ; 0.949      ;
-; 0.710 ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.070      ; 0.951      ;
-; 0.773 ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.070      ; 1.014      ;
-; 0.780 ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.022      ;
-; 0.780 ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.022      ;
-; 0.780 ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.022      ;
-; 0.780 ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.022      ;
-; 0.780 ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.022      ;
-; 0.780 ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.022      ;
-; 0.780 ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.022      ;
-; 0.918 ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.071      ; 1.160      ;
-; 0.925 ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.169      ;
-; 0.925 ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.169      ;
-; 0.938 ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.180      ;
-; 0.976 ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.218      ;
-; 1.001 ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.245      ;
-; 1.004 ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.248      ;
-; 1.077 ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.319      ;
-; 1.215 ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.854      ;
-; 1.215 ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.854      ;
-; 1.215 ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.854      ;
-; 1.215 ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.854      ;
-; 1.215 ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.854      ;
-; 1.215 ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.854      ;
-; 1.215 ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.854      ;
-; 1.215 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.854      ;
-; 1.215 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.854      ;
-; 1.215 ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.468      ; 1.854      ;
-; 1.441 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.685      ;
-; 1.447 ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.447 ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.447 ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.447 ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.447 ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.447 ; trans_pushed ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.447 ; trans_pushed ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.447 ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.447 ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.447 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.447 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.071      ; 1.689      ;
-; 1.573 ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.817      ;
-; 1.573 ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.817      ;
-; 1.573 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.817      ;
-; 1.573 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.817      ;
-; 1.573 ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.817      ;
-; 1.573 ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.817      ;
-; 1.573 ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.817      ;
-; 1.647 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.069      ; 1.887      ;
+; 0.417 ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 0.000        ; 0.072      ; 0.660      ;
+; 0.471 ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.112      ;
+; 0.568 ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.472      ; 1.211      ;
+; 0.608 ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 0.852      ;
+; 0.631 ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 0.874      ;
+; 0.632 ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 0.875      ;
+; 0.633 ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 0.876      ;
+; 0.642 ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 0.884      ;
+; 0.643 ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 0.885      ;
+; 0.644 ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 0.886      ;
+; 0.650 ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.071      ; 0.892      ;
+; 0.660 ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 0.902      ;
+; 0.666 ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 0.908      ;
+; 0.677 ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.472      ; 1.320      ;
+; 0.726 ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 0.969      ;
+; 0.746 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.387      ;
+; 0.767 ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.408      ;
+; 0.767 ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.408      ;
+; 0.767 ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.408      ;
+; 0.767 ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.408      ;
+; 0.767 ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.408      ;
+; 0.798 ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.472      ; 1.441      ;
+; 0.833 ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.076      ;
+; 0.837 ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.065      ; 1.073      ;
+; 0.837 ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.065      ; 1.073      ;
+; 0.862 ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.105      ;
+; 0.943 ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.065      ; 1.179      ;
+; 0.980 ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.223      ;
+; 0.980 ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.223      ;
+; 0.980 ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.223      ;
+; 0.980 ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.223      ;
+; 0.980 ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.223      ;
+; 0.980 ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.223      ;
+; 0.982 ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.065      ; 1.218      ;
+; 1.196 ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.472      ; 1.839      ;
+; 1.196 ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.472      ; 1.839      ;
+; 1.196 ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.472      ; 1.839      ;
+; 1.205 ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.846      ;
+; 1.205 ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.846      ;
+; 1.205 ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.846      ;
+; 1.205 ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.846      ;
+; 1.205 ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.846      ;
+; 1.205 ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.846      ;
+; 1.205 ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.470      ; 1.846      ;
+; 1.445 ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.445 ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.688      ;
+; 1.635 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.879      ;
+; 1.644 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.886      ;
+; 1.644 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.886      ;
+; 1.644 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.886      ;
+; 1.644 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.886      ;
+; 1.644 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.071      ; 1.886      ;
+; 1.644 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.071      ; 1.886      ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -526,7 +526,7 @@ No synchronizer chains to report.
 +-------+--------+-------------------+
 ; Clock ; Slack  ; End Point TNS     ;
 +-------+--------+-------------------+
-; clk   ; -0.142 ; -0.177            ;
+; clk   ; -0.033 ; -0.226            ;
 +-------+--------+-------------------+
 
 
@@ -556,7 +556,7 @@ No paths to report.
 +-------+--------+---------------------------------+
 ; Clock ; Slack  ; End Point TNS                   ;
 +-------+--------+---------------------------------+
-; clk   ; -3.000 ; -40.439                         ;
+; clk   ; -3.000 ; -40.445                         ;
 +-------+--------+---------------------------------+
 
 
@@ -565,70 +565,70 @@ No paths to report.
 +--------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node    ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+--------------+--------------+--------------+-------------+--------------+------------+------------+
-; -0.142 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 1.090      ;
-; -0.035 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.980      ;
-; 0.002  ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.943      ;
-; 0.022  ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.926      ;
-; 0.022  ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.926      ;
-; 0.022  ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.926      ;
-; 0.022  ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.926      ;
-; 0.022  ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.926      ;
-; 0.022  ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.926      ;
-; 0.022  ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.926      ;
-; 0.059  ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.889      ;
-; 0.059  ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.889      ;
-; 0.059  ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.889      ;
-; 0.059  ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.889      ;
-; 0.059  ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.889      ;
-; 0.059  ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.039     ; 0.889      ;
-; 0.070  ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
-; 0.070  ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
-; 0.070  ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
-; 0.070  ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
-; 0.070  ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
+; -0.033 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.978      ;
+; -0.033 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.978      ;
+; -0.033 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.978      ;
+; -0.033 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.978      ;
+; -0.033 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.978      ;
+; -0.033 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.042     ; 0.978      ;
+; -0.028 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 0.975      ;
+; 0.017  ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.928      ;
+; 0.017  ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.928      ;
+; 0.017  ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.928      ;
+; 0.017  ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.928      ;
+; 0.017  ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 0.928      ;
+; 0.017  ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.042     ; 0.928      ;
+; 0.022  ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 0.925      ;
+; 0.070  ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
+; 0.070  ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
+; 0.070  ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
 ; 0.070  ; trans_pushed ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
+; 0.070  ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
 ; 0.070  ; trans_pushed ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
-; 0.070  ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
-; 0.070  ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
-; 0.070  ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
-; 0.070  ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
-; 0.107  ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.107  ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.107  ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.107  ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.107  ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.107  ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.107  ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.107  ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.107  ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.107  ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.107  ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 1.000        ; -0.041     ; 0.839      ;
-; 0.182  ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.958      ;
-; 0.182  ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.958      ;
-; 0.182  ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.958      ;
-; 0.182  ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.958      ;
-; 0.182  ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.958      ;
-; 0.182  ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.958      ;
-; 0.182  ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.958      ;
-; 0.182  ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.958      ;
-; 0.182  ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.958      ;
-; 0.182  ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.958      ;
-; 0.219  ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.921      ;
-; 0.219  ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.921      ;
-; 0.219  ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.921      ;
-; 0.219  ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.921      ;
-; 0.219  ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.921      ;
-; 0.219  ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.921      ;
-; 0.219  ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.921      ;
-; 0.219  ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.921      ;
-; 0.219  ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.921      ;
-; 0.219  ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.153      ; 0.921      ;
-; 0.347  ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.042     ; 0.598      ;
-; 0.398  ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 1.000        ; -0.040     ; 0.549      ;
-; 0.401  ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.042     ; 0.544      ;
-; 0.470  ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.042     ; 0.475      ;
-; 0.475  ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.042     ; 0.470      ;
-; 0.562  ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 1.000        ; -0.040     ; 0.385      ;
+; 0.070  ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
+; 0.070  ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
+; 0.070  ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
+; 0.070  ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
+; 0.070  ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
+; 0.070  ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.876      ;
+; 0.120  ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.120  ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.826      ;
+; 0.191  ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.950      ;
+; 0.191  ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.950      ;
+; 0.191  ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.950      ;
+; 0.191  ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.950      ;
+; 0.191  ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.950      ;
+; 0.191  ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.950      ;
+; 0.191  ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.950      ;
+; 0.197  ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.156      ; 0.946      ;
+; 0.197  ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.156      ; 0.946      ;
+; 0.197  ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.156      ; 0.946      ;
+; 0.238  ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.048     ; 0.701      ;
+; 0.241  ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.900      ;
+; 0.241  ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.900      ;
+; 0.241  ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.900      ;
+; 0.241  ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.900      ;
+; 0.241  ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.900      ;
+; 0.241  ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.900      ;
+; 0.241  ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 1.000        ; 0.154      ; 0.900      ;
+; 0.247  ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.156      ; 0.896      ;
+; 0.247  ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 1.000        ; 0.156      ; 0.896      ;
+; 0.247  ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 1.000        ; 0.156      ; 0.896      ;
+; 0.248  ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.048     ; 0.691      ;
+; 0.297  ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 1.000        ; -0.048     ; 0.642      ;
+; 0.310  ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 1.000        ; -0.048     ; 0.629      ;
+; 0.560  ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 1.000        ; -0.041     ; 0.386      ;
+; 0.561  ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 1.000        ; -0.041     ; 0.385      ;
 +--------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -637,70 +637,70 @@ No paths to report.
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node    ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
-; 0.201 ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.325      ;
-; 0.242 ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.569      ;
-; 0.242 ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.569      ;
-; 0.242 ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.569      ;
-; 0.242 ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.569      ;
-; 0.242 ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.569      ;
-; 0.242 ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.569      ;
-; 0.242 ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.569      ;
-; 0.271 ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.039      ; 0.394      ;
-; 0.285 ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.039      ; 0.408      ;
-; 0.293 ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.417      ;
-; 0.296 ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.623      ;
-; 0.297 ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.423      ;
-; 0.300 ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.426      ;
-; 0.303 ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.630      ;
-; 0.309 ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.636      ;
-; 0.331 ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.039      ; 0.454      ;
-; 0.334 ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 0.000        ; 0.040      ; 0.458      ;
-; 0.373 ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.039      ; 0.496      ;
-; 0.380 ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.505      ;
-; 0.380 ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.505      ;
-; 0.380 ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.505      ;
-; 0.380 ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.505      ;
-; 0.380 ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.505      ;
-; 0.380 ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.505      ;
-; 0.380 ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.505      ;
-; 0.448 ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.041      ; 0.573      ;
-; 0.453 ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.578      ;
-; 0.498 ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.624      ;
-; 0.500 ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.626      ;
-; 0.506 ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.632      ;
-; 0.506 ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.632      ;
-; 0.519 ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.644      ;
-; 0.576 ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.701      ;
-; 0.595 ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.922      ;
-; 0.595 ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.922      ;
-; 0.595 ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.922      ;
-; 0.595 ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.922      ;
-; 0.595 ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.922      ;
-; 0.595 ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.922      ;
-; 0.595 ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.922      ;
-; 0.595 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.922      ;
-; 0.595 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.922      ;
-; 0.595 ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.243      ; 0.922      ;
-; 0.726 ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
-; 0.726 ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
-; 0.726 ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
-; 0.726 ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
-; 0.726 ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
+; 0.201 ; trans_push_1 ; trans_push_2 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.326      ;
+; 0.201 ; rst_push_1   ; rst_push_2   ; clk          ; clk         ; 0.000        ; 0.041      ; 0.326      ;
+; 0.227 ; rst_pushed   ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.555      ;
+; 0.273 ; rst_pushed   ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.246      ; 0.603      ;
+; 0.290 ; rst_pushed   ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.416      ;
+; 0.315 ; rst_pushed   ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.440      ;
+; 0.316 ; rst_pushed   ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.441      ;
+; 0.317 ; rst_pushed   ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.442      ;
+; 0.318 ; rst_pushed   ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.442      ;
+; 0.320 ; rst_pushed   ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.444      ;
+; 0.321 ; rst_pushed   ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.445      ;
+; 0.323 ; rst_pushed   ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.447      ;
+; 0.324 ; rst_pushed   ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.448      ;
+; 0.328 ; rst_pushed   ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.246      ; 0.658      ;
+; 0.329 ; rst_pushed   ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.040      ; 0.453      ;
+; 0.357 ; rst_pushed   ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.685      ;
+; 0.357 ; rst_pushed   ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.685      ;
+; 0.357 ; rst_pushed   ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.685      ;
+; 0.357 ; rst_pushed   ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.685      ;
+; 0.357 ; rst_pushed   ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.685      ;
+; 0.357 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.685      ;
+; 0.359 ; rst_pushed   ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.484      ;
+; 0.378 ; rst_pushed   ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.246      ; 0.708      ;
+; 0.411 ; rst_pushed   ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.536      ;
+; 0.424 ; trans_push_1 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.034      ; 0.542      ;
+; 0.424 ; rst_push_2   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.034      ; 0.542      ;
+; 0.429 ; rst_pushed   ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.554      ;
+; 0.467 ; trans_push_2 ; trans_pushed ; clk          ; clk         ; 0.000        ; 0.034      ; 0.585      ;
+; 0.473 ; rst_pushed   ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.598      ;
+; 0.473 ; rst_pushed   ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.598      ;
+; 0.473 ; rst_pushed   ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.598      ;
+; 0.473 ; rst_pushed   ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.598      ;
+; 0.473 ; rst_pushed   ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.598      ;
+; 0.473 ; rst_pushed   ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.598      ;
+; 0.495 ; rst_push_1   ; rst_pushed   ; clk          ; clk         ; 0.000        ; 0.034      ; 0.613      ;
+; 0.587 ; trans_pushed ; HEX4[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.246      ; 0.917      ;
+; 0.587 ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.246      ; 0.917      ;
+; 0.587 ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.246      ; 0.917      ;
+; 0.591 ; trans_pushed ; HEX5[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.919      ;
+; 0.591 ; trans_pushed ; HEX5[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.919      ;
+; 0.591 ; trans_pushed ; HEX5[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.919      ;
+; 0.591 ; trans_pushed ; HEX5[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.919      ;
+; 0.591 ; trans_pushed ; HEX7[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.919      ;
+; 0.591 ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.919      ;
+; 0.591 ; trans_pushed ; HEX6[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.244      ; 0.919      ;
+; 0.726 ; trans_pushed ; HEX4[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
+; 0.726 ; trans_pushed ; HEX4[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
+; 0.726 ; trans_pushed ; HEX4[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
 ; 0.726 ; trans_pushed ; HEX6[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
+; 0.726 ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
 ; 0.726 ; trans_pushed ; HEX7[4]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
-; 0.726 ; trans_pushed ; HEX6[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
-; 0.726 ; trans_pushed ; HEX6[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
-; 0.726 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
-; 0.726 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
-; 0.751 ; rst_pushed   ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.877      ;
-; 0.779 ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.905      ;
-; 0.779 ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.905      ;
-; 0.779 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.905      ;
-; 0.779 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.905      ;
-; 0.779 ; trans_pushed ; HEX6[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.905      ;
-; 0.779 ; trans_pushed ; HEX7[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.905      ;
-; 0.779 ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.905      ;
-; 0.813 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.937      ;
+; 0.726 ; trans_pushed ; HEX4[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
+; 0.726 ; trans_pushed ; HEX4[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
+; 0.726 ; trans_pushed ; HEX6[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
+; 0.726 ; trans_pushed ; HEX6[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
+; 0.726 ; trans_pushed ; HEX7[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
+; 0.726 ; trans_pushed ; HEX7[5]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.851      ;
+; 0.808 ; trans_pushed ; HEX4[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.934      ;
+; 0.812 ; trans_pushed ; HEX5[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.936      ;
+; 0.812 ; trans_pushed ; HEX5[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.936      ;
+; 0.812 ; trans_pushed ; HEX5[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.936      ;
+; 0.812 ; trans_pushed ; HEX7[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.936      ;
+; 0.812 ; trans_pushed ; HEX7[6]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.936      ;
+; 0.812 ; trans_pushed ; LEDG8~reg0   ; clk          ; clk         ; 0.000        ; 0.040      ; 0.936      ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -715,10 +715,10 @@ No synchronizer chains to report.
 +------------------+---------+-------+----------+---------+---------------------+
 ; Clock            ; Setup   ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------+---------+-------+----------+---------+---------------------+
-; Worst-case Slack ; -1.401  ; 0.201 ; N/A      ; N/A     ; -3.000              ;
-;  clk             ; -1.401  ; 0.201 ; N/A      ; N/A     ; -3.000              ;
-; Design-wide TNS  ; -26.291 ; 0.0   ; 0.0      ; 0.0     ; -47.975             ;
-;  clk             ; -26.291 ; 0.000 ; N/A      ; N/A     ; -47.975             ;
+; Worst-case Slack ; -1.122  ; 0.201 ; N/A      ; N/A     ; -3.000              ;
+;  clk             ; -1.122  ; 0.201 ; N/A      ; N/A     ; -3.000              ;
+; Design-wide TNS  ; -26.432 ; 0.0   ; 0.0      ; 0.0     ; -47.975             ;
+;  clk             ; -26.432 ; 0.000 ; N/A      ; N/A     ; -47.975             ;
 +------------------+---------+-------+----------+---------+---------------------+
 
 
@@ -937,7 +937,7 @@ No synchronizer chains to report.
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 95       ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 96       ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -947,7 +947,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 95       ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 96       ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1119,11 +1119,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Sat Nov 02 17:05:20 2024
+    Info: Processing started: Thu Nov 14 11:37:10 2024
 Info: Command: quartus_sta num_syst -c num_syst
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'num_syst.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
@@ -1136,14 +1136,14 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -1.401
+Info (332146): Worst-case setup slack is -1.122
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.401             -26.291 clk 
-Info (332146): Worst-case hold slack is 0.452
+    Info (332119):    -1.122             -26.432 clk 
+Info (332146): Worst-case hold slack is 0.451
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.452               0.000 clk 
+    Info (332119):     0.451               0.000 clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
@@ -1156,10 +1156,10 @@ Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -1.208
+Info (332146): Worst-case setup slack is -0.924
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.208             -20.947 clk 
+    Info (332119):    -0.924             -21.140 clk 
 Info (332146): Worst-case hold slack is 0.417
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1174,10 +1174,10 @@ Info: Analyzing Fast 1200mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -0.142
+Info (332146): Worst-case setup slack is -0.033
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.142              -0.177 clk 
+    Info (332119):    -0.033              -0.226 clk 
 Info (332146): Worst-case hold slack is 0.201
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1187,13 +1187,13 @@ Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -40.439 clk 
+    Info (332119):    -3.000             -40.445 clk 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4952 megabytes
-    Info: Processing ended: Sat Nov 02 17:05:25 2024
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 4810 megabytes
+    Info: Processing ended: Thu Nov 14 11:37:19 2024
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:03
 
 

@@ -1,8 +1,8 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="2a14455903760087cb37"/>
+    <hash md5_digest_80b="603b6d8190fd6ce2fc83"/>
   </project>
   <file_info>
-    <file device="EP4CE115F29C7" path="//wsl.localhost/Ubuntu/home/vadim/elbrus/basa_hw/fpga/num_syst/output_files/num_syst.sof" usercode="0xFFFFFFFF"/>
+    <file device="EP4CE115F29C7" path="num_syst.sof" usercode="0xFFFFFFFF"/>
   </file_info>
 </sld_project_info>

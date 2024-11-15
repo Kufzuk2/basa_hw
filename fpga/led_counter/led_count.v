@@ -5,7 +5,7 @@ module led_count
     input  wire KEY1,  // inc
     input  wire KEY2,  // dec
 
-    output wire [8: 0] LEDG
+    output reg  [8: 0] LEDG
 );
 
     reg  [8: 0]   counter;
@@ -54,7 +54,7 @@ module led_count
 
 
 
-
+/*
     always @(posedge clk) begin
         if (but0)
             counter <= 0;
@@ -63,6 +63,25 @@ module led_count
                        but2 ? counter - 1 :
                                    counter;
     end
-
-    assign LEDG = counter; 
+*/
+    genvar i;
+    generate
+	 for (i = 0; i < 9; i = i + 1) begin : led_logic
+    always @(posedge clk) begin
+	 if (but0)
+			LEDG[i] <= 0;
+	  else if (i == 0)
+		LEDG[i] <=  (but1 & ~LEDG[8]) | (~LEDG[0] & but2) ? 1 : 
+					  (but2 & ~LEDG[i + 1])|  (but1 & LEDG[8]) ? 0 : LEDG[i];
+		else if (i == 8)
+		LEDG[i] <= (but1 & ~LEDG[8] & LEDG[i - 1]) | (~LEDG[0] & but2) ? 1 :
+	                     (but2 & LEDG[i]) | (but1 & LEDG[8]) ? 0 :
+		   		                              LEDG[i];
+	   else
+		LEDG[i] <= (but1 & ~LEDG[8] & LEDG[i - 1]) | (~LEDG[0] & but2) ? 1 :
+	                     (but2 & LEDG[i] & ~LEDG[i + 1]) | (but1 & LEDG[8]) ? 0 :
+		   		         LEDG[i    ]     ;
+    end
+	 end
+    endgenerate
 endmodule

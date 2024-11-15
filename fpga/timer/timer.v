@@ -181,7 +181,7 @@ module timer
     end
 
 
-    always @(posedge imp) begin
+    always @(posedge clk) begin
         if (rst)
             split_count <= 0;
         else
@@ -217,11 +217,11 @@ module timer
 //************************************************************************************************
 //// remembered timings logic
 //************************************************************************************************
-    always @(posedge imp) begin
+    always @(posedge clk) begin
         if (rst)
             show_cnt <= 0;
         else
-            show_cnt <= ~(show /*& ~work*/) ? show_cnt     :
+            show_cnt <= ~(show /*& ~work*/) ? show_cnt :
                         show_cnt != 'h4 ? show_cnt + 1 :
                                                      0 ;
     end // only when timer is stopped
@@ -229,7 +229,14 @@ module timer
 
     reg [3: 0]  r_left [3: 0];
     reg [3: 0] r_right [3: 0];
+	 reg [3: 0] write_cnt;
     
+	     always @(posedge clk) begin
+        if (rst)
+            write_cnt <= 0;
+        else
+            write_cnt <= write & write_cnt != 'h4 ? write_cnt + 1 : write_cnt ;
+    end
 
     genvar i;
     generate
@@ -239,16 +246,10 @@ module timer
                     r_left [i] <= 0;
                     r_right[i] <= 0;
                 end else begin
-                    if (i == 0) begin
-                        r_left [i] <= write & !r_left [i] ?  s_dec_count :  r_left[i];
-                        r_right[i] <= write & !r_right[i] ? s_unit_count : r_right[i];
-                    end else begin
-                    r_left [i] <= write & r_left [i - 1] & !r_left [i] ?  s_dec_count :  r_left[i];
-                    r_right[i] <= write & r_right[i - 1] & !r_right[i] ? s_unit_count : r_right[i];
+                    r_left [i] <= write & work & (write_cnt == i)/*& r_left [i - 1] & !r_left [i]*/ ?  s_dec_count :  r_left[i];
+                    r_right[i] <= write & work & (write_cnt == i) /*r_right[i - 1] & !r_right[i] */ ? s_unit_count : r_right[i];
                     end
-                end
-            end
-
+            end        
 
         end     
     endgenerate // 0000 will not be written
@@ -264,8 +265,8 @@ module timer
     wire [3 : 0] cur_show1;
     wire [3 : 0] cur_show2;
 
-    assign cur_show1 = r_right[show_cnt];
-    assign cur_show2 =  r_left[show_cnt];
+    assign cur_show1 = (show_cnt == 'h4) ? s_unit_count : r_right[show_cnt];
+    assign cur_show2 = (show_cnt == 'h4) ?  s_dec_count : r_left [show_cnt];
 
     // if timer continued during show of old records semseg will not change,
     // time wil be calculatinf next
@@ -277,9 +278,8 @@ module timer
         end else begin
             HEX0 <= hex0_loc;  
 
-            HEX1 <= work ? hex1_loc  :
-                    show ? hex1_show :
-                                HEX1 ;
+            HEX1 <=  work ? hex1_loc  	    :
+                    ~show ? HEX1: hex1_show;
         
             HEX2 <= work ? hex2_loc  :
                     show ? hex2_show :

@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Sat Nov 02 17:04:50 2024
+Analysis & Synthesis Status : Successful - Thu Nov 14 11:36:10 2024
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : num_syst
 Top-level Entity Name : num_syst
 Family : Cyclone IV E
-Total logic elements : 132
-    Total combinational functions : 128
+Total logic elements : 103
+    Total combinational functions : 99
     Dedicated logic registers : 35
 Total registers : 35
 Total pins : 48

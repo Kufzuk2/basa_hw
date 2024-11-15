@@ -1,13 +1,13 @@
 |led_count
-clk => counter[0].CLK
-clk => counter[1].CLK
-clk => counter[2].CLK
-clk => counter[3].CLK
-clk => counter[4].CLK
-clk => counter[5].CLK
-clk => counter[6].CLK
-clk => counter[7].CLK
-clk => counter[8].CLK
+clk => LEDG[8]~reg0.CLK
+clk => LEDG[7]~reg0.CLK
+clk => LEDG[6]~reg0.CLK
+clk => LEDG[5]~reg0.CLK
+clk => LEDG[4]~reg0.CLK
+clk => LEDG[3]~reg0.CLK
+clk => LEDG[2]~reg0.CLK
+clk => LEDG[1]~reg0.CLK
+clk => LEDG[0]~reg0.CLK
 clk => but2.CLK
 clk => but2_2.CLK
 clk => but2_1.CLK
@@ -20,14 +20,14 @@ clk => but0_1.CLK
 KEY0 => but0_1.DATAIN
 KEY1 => but1_1.DATAIN
 KEY2 => but2_1.DATAIN
-LEDG[0] << counter[0].DB_MAX_OUTPUT_PORT_TYPE
-LEDG[1] << counter[1].DB_MAX_OUTPUT_PORT_TYPE
-LEDG[2] << counter[2].DB_MAX_OUTPUT_PORT_TYPE
-LEDG[3] << counter[3].DB_MAX_OUTPUT_PORT_TYPE
-LEDG[4] << counter[4].DB_MAX_OUTPUT_PORT_TYPE
-LEDG[5] << counter[5].DB_MAX_OUTPUT_PORT_TYPE
-LEDG[6] << counter[6].DB_MAX_OUTPUT_PORT_TYPE
-LEDG[7] << counter[7].DB_MAX_OUTPUT_PORT_TYPE
-LEDG[8] << counter[8].DB_MAX_OUTPUT_PORT_TYPE
+LEDG[0] <= LEDG[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[1] <= LEDG[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[2] <= LEDG[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[3] <= LEDG[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[4] <= LEDG[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[5] <= LEDG[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[6] <= LEDG[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[7] <= LEDG[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[8] <= LEDG[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
